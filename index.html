@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasfia Noor Chowdhury — Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232563EB'/%3E%3Ctext x='50' y='68' font-size='55' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #FAFBFC; --white: #FFFFFF; --text: #1E293B; --text2: #475569;
+    --accent: #2563EB; --accent-light: #EFF6FF; --accent-dark: #1E40AF;
+    --border: #E2E8F0; --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,.07); --radius: 12px; --nav-h: 64px;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+  a { color: var(--accent); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--accent-dark); }
+  img { max-width: 100%; display: block; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(255,255,255,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); }
+  .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-links a { font-size: .82rem; font-weight: 500; color: var(--text2); padding: 6px 12px; border-radius: 8px; transition: background .2s, color .2s; }
+  .nav-links a:hover, .nav-links a.active { background: var(--accent-light); color: var(--accent); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .hamburger svg { width: 26px; height: 26px; stroke: var(--text); }
+
+  section { max-width: 900px; margin: 0 auto; padding: 80px clamp(1.2rem,4vw,2rem) 40px; }
+  section:first-of-type { padding-top: calc(var(--nav-h) + 60px); }
+  .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: .3rem; }
+  .section-sub { color: var(--text2); font-size: .95rem; margin-bottom: 1.8rem; }
+  .divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 2rem; }
+
+  .hero { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+  .hero-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-light); box-shadow: var(--shadow-lg); flex-shrink: 0; background: var(--accent-light); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-text { flex: 1; min-width: 260px; }
+  .hero-text h1 { font-size: 2rem; line-height: 1.2; margin-bottom: .5rem; }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-text .tagline { color: var(--text2); font-size: 1.05rem; margin-bottom: 1rem; }
+  .hero-text p { color: var(--text2); font-size: .93rem; margin-bottom: 1.4rem; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: .88rem; font-weight: 600; transition: transform .15s, box-shadow .2s; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+  .btn-outline { border: 1.5px solid var(--border); color: var(--text); background: var(--white); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); transition: box-shadow .25s, transform .2s; }
+  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .card h3 { font-size: 1rem; margin-bottom: .4rem; }
+  .card p, .card li { font-size: .88rem; color: var(--text2); }
+  .card .tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin: 2px 2px 0 0; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content:''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 1.6rem; }
+  .tl-item::before { content:''; position: absolute; left: -24px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--white); }
+  .tl-item h3 { font-size: .95rem; margin-bottom: 2px; }
+  .tl-item .tl-meta { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+  .tl-item p { font-size: .88rem; color: var(--text2); }
+
+  .skill-category { margin-bottom: 1.2rem; }
+  .skill-category h3 { font-size: .9rem; font-weight: 700; margin-bottom: .5rem; color: var(--text); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag { background: var(--white); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; font-size: .82rem; font-weight: 500; color: var(--text2); transition: all .2s; }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .gallery-item { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; background: var(--accent-light); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: .85rem; font-weight: 500; text-align: center; padding: 1rem; border: 1px solid var(--border); transition: transform .2s; cursor: pointer; }
+  .gallery-item:hover { transform: scale(1.03); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link { display: flex; align-items: center; gap: 10px; padding: 14px 18px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); font-size: .9rem; font-weight: 500; transition: all .2s; }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow); }
+  .contact-link .cl-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-link .cl-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  footer { text-align: center; padding: 2rem 1rem; font-size: .82rem; color: var(--text2); border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 16px; gap: 2px; display: none; box-shadow: var(--shadow-lg); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: block; }
+    .hero { flex-direction: column; text-align: center; gap: 24px; }
+    .btn-row { justify-content: center; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-logo">Tasfia<span>.</span></div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#activities">Activities</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HERO / ABOUT ===== -->
+<section id="about">
+  <div class="hero">
+    <div class="hero-img">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="180" height="180">
+        <circle cx="100" cy="100" r="100" fill="#EFF6FF"/>
+        <!-- Hair back -->
+        <ellipse cx="100" cy="78" rx="52" ry="55" fill="#1E293B"/>
+        <ellipse cx="100" cy="130" rx="40" ry="30" fill="#1E293B"/>
+        <!-- Neck -->
+        <rect x="88" y="118" width="24" height="20" rx="6" fill="#D4A574"/>
+        <!-- Lab coat -->
+        <path d="M56 160 Q60 138 100 135 Q140 138 144 160 L148 200 L52 200 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+        <path d="M82 138 L100 155 L118 138" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M86 140 L100 152 L114 140" fill="#2563EB" opacity=".15"/>
+        <!-- Face -->
+        <ellipse cx="100" cy="90" rx="38" ry="42" fill="#D4A574"/>
+        <!-- Hair front -->
+        <path d="M62 78 Q62 45 100 40 Q138 45 138 78 Q130 60 100 58 Q70 60 62 78 Z" fill="#1E293B"/>
+        <path d="M62 78 Q58 95 60 115 Q62 100 66 88 Z" fill="#1E293B"/>
+        <path d="M138 78 Q142 95 140 115 Q138 100 134 88 Z" fill="#1E293B"/>
+        <!-- Eyes -->
+        <ellipse cx="85" cy="88" rx="5" ry="5.5" fill="#1E293B"/>
+        <ellipse cx="115" cy="88" rx="5" ry="5.5" fill="#1E293B"/>
+        <circle cx="83" cy="86.5" r="1.5" fill="white"/>
+        <circle cx="113" cy="86.5" r="1.5" fill="white"/>
+        <!-- Eyebrows -->
+        <path d="M76 80 Q85 76 94 80" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M106 80 Q115 76 124 80" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/>
+        <!-- Nose -->
+        <path d="M100 90 Q96 100 98 102 Q100 104 102 102 Q104 100 100 90" fill="#C4956A" opacity=".6"/>
+        <!-- Smile -->
+        <path d="M88 107 Q100 117 112 107" fill="none" stroke="#994D3A" stroke-width="2" stroke-linecap="round"/>
+        <!-- Glasses -->
+        <circle cx="85" cy="88" r="12" fill="none" stroke="#475569" stroke-width="2"/>
+        <circle cx="115" cy="88" r="12" fill="none" stroke="#475569" stroke-width="2"/>
+        <line x1="97" y1="88" x2="103" y2="88" stroke="#475569" stroke-width="2"/>
+        <line x1="73" y1="86" x2="66" y2="83" stroke="#475569" stroke-width="2"/>
+        <line x1="127" y1="86" x2="134" y2="83" stroke="#475569" stroke-width="2"/>
+        <!-- Graduation cap -->
+        <polygon points="100,28 55,48 100,62 145,48" fill="#1E293B"/>
+        <rect x="96" y="28" width="8" height="4" rx="1" fill="#1E293B"/>
+        <polygon points="100,30 98,26 102,26" fill="#1E293B"/>
+        <line x1="140" y1="48" x2="142" y2="62" stroke="#F59E0B" stroke-width="1.5"/>
+        <circle cx="142" cy="64" r="3" fill="#F59E0B"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Tasfia Noor Chowdhury</span></h1>
+      <p class="tagline">Mechatronics Engineer · Researcher · Educator</p>
+      <p>I'm a Mechatronics Engineering graduate from CUET, Bangladesh (Senior Year GPA: 3.96/4.00) with research interests in machine learning, computer vision, and data-driven analytics. I'm passionate about using technology to solve real-world problems — from flood monitoring with AI to healthcare optimisation.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="#research" class="btn btn-outline">View Research</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEARCH & PUBLICATIONS ===== -->
+<section id="research">
+  <h2 class="section-title">Research & Publications</h2>
+  <p class="section-sub">Peer-reviewed work and preprints in AI, computer vision, and healthcare analytics.</p>
+  <div class="divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:.5rem;">
+        <span class="tag">arXiv · 2025</span>
+        <a href="https://doi.org/10.48550/arXiv.2501.08266" target="_blank" style="font-size:.8rem;font-weight:600;">Paper ↗</a>
+      </div>
+      <h3>AI-Driven Water Segmentation for Enhanced Flood Monitoring</h3>
+      <p style="margin:.5rem 0;">Developed deep learning models for automated flood detection using satellite and aerial imagery. Achieved <strong>90.57% accuracy</strong> by augmenting datasets with diverse flood scenarios.</p>
+      <div><span class="tag">Deep Learning</span> <span class="tag">Computer Vision</span> <span class="tag">Disaster Management</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:.5rem;">
+        <span class="tag">arXiv · 2025</span>
+        <a href="https://arxiv.org/abs/2501.18535" target="_blank" style="font-size:.8rem;font-weight:600;">Paper ↗</a>
+      </div>
+      <h3>A Hybrid Data-Driven Approach for Analyzing Inpatient Length of Stay</h3>
+      <p style="margin:.5rem 0;">Applied ML and statistical methods to hospital inpatient data to predict length of stay and recommend resource-optimisation strategies.</p>
+      <div><span class="tag">Healthcare Analytics</span> <span class="tag">Machine Learning</span> <span class="tag">Data Science</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <p class="section-sub">Hands-on engineering projects spanning automation, AI, and assistive technology.</p>
+  <div class="divider"></div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="tag" style="margin-bottom:.6rem;display:inline-block;">Top 250 · Unibator BD</span>
+      <h3>Smart Irrigation System</h3>
+      <p style="margin:.5rem 0;">Automated sprinkler system integrating real-time soil-moisture and weather data for water-efficient farming using Arduino and sensor networks.</p>
+      <div><span class="tag">Arduino</span> <span class="tag">IoT</span> <span class="tag">Sensors</span></div>
+    </div>
+    <div class="card">
+      <span class="tag" style="margin-bottom:.6rem;display:inline-block;">Industrial Automation</span>
+      <h3>Automated Box-Sorting System</h3>
+      <p style="margin:.5rem 0;">PLC-based sorting mechanism using Factory I/O, Ladder Logic, and vision sensors with optimised conveyor synchronisation.</p>
+      <div><span class="tag">PLC</span> <span class="tag">Factory I/O</span> <span class="tag">Vision</span></div>
+    </div>
+    <div class="card">
+      <span class="tag" style="margin-bottom:.6rem;display:inline-block;">2nd Runner-Up · CUET</span>
+      <h3>Eye-Gaze Controlled Wheelchair</h3>
+      <p style="margin:.5rem 0;">Prototype assistive wheelchair controlled via eye-gaze tracking, designed for mobility-impaired users.</p>
+      <div><span class="tag">Computer Vision</span> <span class="tag">Assistive Tech</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <h2 class="section-title">Technical Skills</h2>
+  <p class="section-sub">Tools and technologies I work with.</p>
+  <div class="divider"></div>
+
+  <div class="skill-category">
+    <h3>Programming & Machine Learning</h3>
+    <div class="skill-tags">
+      <span class="skill-tag">Python</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span>
+      <span class="skill-tag">Scikit-learn</span><span class="skill-tag">MATLAB</span><span class="skill-tag">C</span>
+      <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h3>Automation & Robotics</h3>
+    <div class="skill-tags">
+      <span class="skill-tag">Factory I/O</span><span class="skill-tag">Siemens TIA Portal</span><span class="skill-tag">PLC (Ladder Logic)</span>
+      <span class="skill-tag">Arduino</span><span class="skill-tag">UR3 Robotics</span><span class="skill-tag">Turtle Bot</span><span class="skill-tag">3D Printing</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h3>Design & Simulation</h3>
+    <div class="skill-tags">
+      <span class="skill-tag">AutoCAD</span><span class="skill-tag">SolidWorks</span><span class="skill-tag">Proteus</span><span class="skill-tag">TinkerCad</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h3>Research & Analytics</h3>
+    <div class="skill-tags">
+      <span class="skill-tag">LaTeX</span><span class="skill-tag">SPSS</span><span class="skill-tag">Power BI</span>
+      <span class="skill-tag">MS Excel</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION & AWARDS ===== -->
+<section id="education">
+  <h2 class="section-title">Education & Awards</h2>
+  <p class="section-sub">Academic background and recognitions.</p>
+  <div class="divider"></div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-meta">Feb 2019 — Jun 2024</div>
+      <h3>B.Sc. in Mechatronics & Industrial Engineering</h3>
+      <p>Chittagong University of Engineering and Technology (CUET)<br>CGPA: 3.63/4.00 · Senior Year: 3.96/4.00 · Rank: 8th · Dean's Award ×5</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-meta">Apr 2016 — Jun 2018</div>
+      <h3>Higher Secondary Certificate (HSC)</h3>
+      <p>Barisal Govt. Women's College · GPA: 5.00/5.00 · Government Scholarship</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-meta">Jun 2016</div>
+      <h3>Secondary School Certificate (SSC)</h3>
+      <p>Barisal Govt. Girls' High School · GPA: 5.00/5.00 · Government Scholarship</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:1.05rem;margin:2rem 0 1rem;">Awards & Honours</h3>
+  <div class="grid-2">
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Aspire Leaders Program Fellow</h3>
+      <p>Harvard Business School Initiative · 2025</p>
+    </div>
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Shoktikonna Leadership Cohort</h3>
+      <p>GIZ, EU & World Bank · 2024</p>
+    </div>
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Semi-Finalist, HULT Prize</h3>
+      <p>Team Bottle Green House @ CUET · 2019</p>
+    </div>
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Regional Winner</h3>
+      <p>English Olympiad & Physics Olympiad · 2017</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK EXPERIENCE ===== -->
+<section id="experience">
+  <h2 class="section-title">Work Experience</h2>
+  <p class="section-sub">Professional and teaching roles.</p>
+  <div class="divider"></div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-meta">Jul 2023 — Present</div>
+      <h3>Communication & Design Lead (Remote)</h3>
+      <p><strong>ILM International School</strong> — Spearheaded communication strategies contributing to a 25% increase in course enrolment. Coordinated cross-functional teams across design, marketing, and administration.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-meta">Jan 2021 — May 2023</div>
+      <h3>STEM Instructor & Academic Mentor</h3>
+      <p><strong>Freelance / Remote</strong> — Delivered customised curricula in Physics, Mathematics, and IT. Mentored students toward measurable academic improvements using interactive, project-based methods.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:1.05rem;margin:2rem 0 1rem;">Professional Training</h3>
+  <div class="grid-3">
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Industrial Induction</h3>
+      <p>Berger Paints Ltd · Sep 2023</p>
+    </div>
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>EHS & ISO 45001:2018</h3>
+      <p>Marico Bangladesh · 2023</p>
+    </div>
+    <div class="card" style="padding:1rem 1.2rem;">
+      <h3>Industrial Operations</h3>
+      <p>PepsiCo Bangladesh · 2023</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CO-CURRICULAR ACTIVITIES ===== -->
+<section id="activities">
+  <h2 class="section-title">Beyond the Lab</h2>
+  <p class="section-sub">Photography, travel, and the things that keep me curious outside of engineering.</p>
+  <div class="divider"></div>
+
+  <div class="gallery">
+    <div class="gallery-item">📷<br>Street Photography</div>
+    <div class="gallery-item">✈️<br>Travelling</div>
+    <div class="gallery-item">🎨<br>Graphic Design</div>
+    <div class="gallery-item">📖<br>Reading</div>
+    <div class="gallery-item">🌱<br>Volunteering</div>
+    <div class="gallery-item">🎵<br>Music</div>
+  </div>
+  <p style="margin-top:1.2rem;font-size:.88rem;color:var(--text2);text-align:center;">
+    <em>Replace these placeholders with your own photos! Each tile can become an image with a caption.</em>
+  </p>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="section-sub">I'm always open to research collaborations, opportunities, and conversations.</p>
+  <div class="divider"></div>
+
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="mailto:tasfiaa.chowdhury@gmail.com" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        tasfiaa.chowdhury@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/tasfia-noor-chowdhury" target="_blank" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        LinkedIn
+      </a>
+      <a href="https://github.com/noortasfia" target="_blank" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        GitHub
+      </a>
+      <a href="http://researchgate.net/profile/Tasfia-Chowdhury" target="_blank" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        ResearchGate
+      </a>
+      <a href="https://orcid.org/0009-0005-2074-1118" target="_blank" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+        ORCID
+      </a>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow);">
+      <h3 style="font-size:1rem;margin-bottom:1rem;">Send a Message</h3>
+      <div style="margin-bottom:.8rem;"><label style="font-size:.82rem;font-weight:600;display:block;margin-bottom:4px;">Name</label><input type="text" placeholder="Your name" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;outline:none;transition:border .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
+      <div style="margin-bottom:.8rem;"><label style="font-size:.82rem;font-weight:600;display:block;margin-bottom:4px;">Email</label><input type="email" placeholder="you@email.com" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;outline:none;transition:border .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
+      <div style="margin-bottom:1rem;"><label style="font-size:.82rem;font-weight:600;display:block;margin-bottom:4px;">Message</label><textarea rows="4" placeholder="Your message..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;resize:vertical;outline:none;transition:border .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit;" onclick="alert('To make this form functional, connect it to Formspree (formspree.io) or Netlify Forms.')">Send Message</button>
+      <p style="font-size:.75rem;color:var(--text2);margin-top:.6rem;text-align:center;"><em>Connect to <a href="https://formspree.io" target="_blank">Formspree</a> to make this form functional.</em></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Tasfia Noor Chowdhury &middot; Built with care</p>
+</footer>
+
+<script>
+(function(){
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  const mob = document.querySelector('.nav-links');
+  links.forEach(l => l.addEventListener('click', () => mob.classList.remove('open')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
+        if(a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  secs.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

@@ -123,6 +123,19 @@
   .graph h4 { font-size: .95rem; font-weight: 800; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
   .graph h4 span { font-weight: 600; color: var(--ink-3); font-size: .82rem; }
   .graph img { width: 100%; min-width: 640px; height: auto; }
+  .news { display: grid; grid-template-columns: 1fr 1.25fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; }
+  .news-head { background: var(--soft); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 10px; }
+  .news-head .k { font-family: var(--pixel); font-size: 1.2rem; color: var(--sun-ink); }
+  .news-head h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+  .news-head p { font-size: 1rem; line-height: 1.55; color: var(--ink-3); }
+  .news-head .meta { font-size: .88rem; font-weight: 700; color: var(--ink); }
+  .news-head .btn { align-self: flex-start; margin-top: auto; }
+  .news-list { list-style: none; margin: 0; padding: 8px clamp(18px, 2.6vw, 28px); display: flex; flex-direction: column; justify-content: center; }
+  .news-list li + li { border-top: 1px solid var(--line); }
+  .news-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 15px 0; }
+  .news-list b { font-size: 1rem; font-weight: 700; line-height: 1.4; transition: color .2s; }
+  .news-list a:hover b { color: var(--sun-ink); }
+  .news-list time { font-size: .85rem; color: var(--ink-3); white-space: nowrap; }
 
   /* videos */
   .btn-yt { background: #ff0033; color: #fff; }
@@ -332,7 +345,7 @@
     .nav.open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-grid { grid-template-columns: 1fr; }
     .robot { aspect-ratio: 1 / 1; }
-    .cards, .exp, .values, .caps, .write { grid-template-columns: 1fr; }
+    .cards, .exp, .values, .caps, .write, .news { grid-template-columns: 1fr; }
     .certs { grid-template-columns: repeat(2, 1fr); }
     .vids { grid-template-columns: 1fr 1fr; }
     .vid.big { flex-direction: column; }
@@ -614,7 +627,22 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="label">Where I write</span><h2>Notes, code &amp; experiments</h2></div>
-        <p>I write on GitHub: research code, robotics notes, and small tools I build for fun.</p>
+        <p>I write a weekly newsletter on LinkedIn, and on GitHub I share research code, robotics notes and small tools I build for fun.</p>
+      </div>
+      <div class="news reveal">
+        <div class="news-head">
+          <span class="k">/ newsletter</span>
+          <h3>Insight Unveiled</h3>
+          <p>A simple space where I share the insights of little things that make life clearer and better.</p>
+          <span class="meta">Published weekly on LinkedIn</span>
+          <a class="btn btn-dark" href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener">Read &amp; subscribe <span class="arr">↗</span></a>
+        </div>
+        <ul class="news-list">
+          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Everyone owns the roof. Nobody uses it.</b><time datetime="2026-10-30">Oct 2026</time></a></li>
+          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Giving Robots a Sense of “Up”</b><time datetime="2026-03-02">Mar 2026</time></a></li>
+          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Stop Letting a “Broke Mindset” Run Your Life</b><time datetime="2025-12-31">Dec 2025</time></a></li>
+          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Tremors: It Might Not Be Parkinson’s. The B2 &amp; CoQ10 Connection</b><time datetime="2025-12-12">Dec 2025</time></a></li>
+        </ul>
       </div>
       <div class="write">
         <a class="term reveal" href="https://github.com/NoorTasfia" target="_blank" rel="noopener">

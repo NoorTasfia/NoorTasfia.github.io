@@ -119,6 +119,28 @@
   .graph h4 span { font-weight: 600; color: var(--ink-3); font-size: .82rem; }
   .graph img { width: 100%; min-width: 640px; height: auto; }
 
+  /* videos */
+  .btn-yt { background: #ff0033; color: #fff; }
+  .btn-yt:hover { box-shadow: 0 10px 30px rgba(255,0,51,.3); }
+  .vids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .vid { border-radius: 18px; overflow: hidden; background: var(--night); color: #fff; display: flex; flex-direction: column; transition: transform .3s; }
+  .vid:hover { transform: translateY(-5px); }
+  .vid.big { grid-column: 1 / -1; flex-direction: row; }
+  .vid.big .vi { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: clamp(22px, 3vw, 40px); }
+  .vid.big p { font-size: .95rem; color: rgba(255,255,255,.72); }
+  .vid button { all: unset; cursor: pointer; position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+  .vid.big button { flex: 0 0 60%; }
+  .vid button:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
+  .vid img { width: 100%; height: 100%; object-fit: cover; opacity: .82; transition: transform .5s, opacity .3s; }
+  .vid:hover img { transform: scale(1.05); opacity: 1; }
+  .vid iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .vid .play { position: absolute; left: 50%; top: 50%; width: 62px; height: 62px; margin: -31px 0 0 -31px; border-radius: 50%; background: var(--sun); color: var(--night); display: grid; place-items: center; font-size: 1.3rem; padding-left: 4px; box-shadow: 0 0 0 0 rgba(255,214,10,.6); animation: ring 2s infinite; }
+  @keyframes ring { 70% { box-shadow: 0 0 0 16px rgba(255,214,10,0); } 100% { box-shadow: 0 0 0 0 rgba(255,214,10,0); } }
+  .vid .vi { padding: 14px 18px 18px; }
+  .vid .iss { font-family: var(--pixel); font-size: 1.05rem; color: var(--sun); }
+  .vid h4 { font-size: .98rem; font-weight: 800; line-height: 1.3; }
+  .vid.big h4 { font-size: clamp(1.3rem, 2.2vw, 1.8rem); letter-spacing: -.02em; line-height: 1.15; }
+
   /* certificates */
   .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .cert { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s, border-color .3s; }
@@ -307,6 +329,9 @@
     .robot { aspect-ratio: 1 / 1; }
     .cards, .exp, .values, .caps, .write { grid-template-columns: 1fr; }
     .certs { grid-template-columns: repeat(2, 1fr); }
+    .vids { grid-template-columns: 1fr 1fr; }
+    .vid.big { flex-direction: column; }
+    .vid.big button { flex: none; }
     .cap:nth-child(odd) { border-right: 0; padding-right: 6px; }
     .cap:nth-child(even) { padding-left: 6px; }
     .card { min-height: 0; }
@@ -314,7 +339,7 @@
     .pub .act { justify-content: start; }
   }
   @media (max-width: 560px) {
-    .repos, .certs { grid-template-columns: 1fr; }
+    .repos, .certs, .vids { grid-template-columns: 1fr; }
     .stat-grid { gap: 18px; }
     .about-head { flex-direction: column; align-items: start; }
     .foot { grid-template-columns: 1fr; }
@@ -331,6 +356,7 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#writing">Writing</a></li>
+      <li><a href="#videos">Videos</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -615,6 +641,34 @@
     </div>
   </section>
 
+  <!-- VIDEOS (YouTube) -->
+  <section class="sec" id="videos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="label">Where I talk</span><h2>Tas! What are you up to?</h2></div>
+        <a class="btn btn-yt" href="https://www.youtube.com/@taswhatareyouupto933/videos" target="_blank" rel="noopener"><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" rx="4" fill="currentColor"/><path d="M9 4.5v7l6-3.5z" fill="#111"/></svg>My YouTube channel <span class="arr">↗</span></a>
+      </div>
+      <div class="vids">
+        <article class="vid big reveal">
+          <button type="button" data-yt="1etRjXyCowQ" aria-label="Play: IEEE RAAICON 2026 presentation"><img src="https://i.ytimg.com/vi/1etRjXyCowQ/maxresdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></button>
+          <div class="vi"><span class="iss">Conference talk</span><h4>IEEE RAAICON 2026 presentation: MuJoCo robot simulations &amp; skill generation</h4><p>Presenting our paper on turning one hand-gesture demonstration into fifty robot skills in MuJoCo.</p></div>
+        </article>
+        <article class="vid reveal">
+          <button type="button" data-yt="F_onc64OuEQ" aria-label="Play: FloodLite: AI on the Edge"><img src="https://i.ytimg.com/vi/F_onc64OuEQ/maxresdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></button>
+          <div class="vi"><span class="iss">Project</span><h4>FloodLite: AI on the Edge</h4></div>
+        </article>
+        <article class="vid reveal">
+          <button type="button" data-yt="4044WR3Z6R8" aria-label="Play: Innovating with Less"><img src="https://i.ytimg.com/vi/4044WR3Z6R8/maxresdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></button>
+          <div class="vi"><span class="iss">Talk</span><h4>Innovating with Less</h4></div>
+        </article>
+        <article class="vid reveal">
+          <button type="button" data-yt="fTD4IIWKnlk" aria-label="Play: Shoktikonna Leadership Cohort 2025"><img src="https://i.ytimg.com/vi/fTD4IIWKnlk/mqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span></button>
+          <div class="vi"><span class="iss">Leadership</span><h4>Shoktikonna Leadership Cohort 2025</h4></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CERTIFICATES -->
   <section class="sec" id="certificates" style="padding-top:0">
     <div class="wrap">
@@ -725,6 +779,7 @@
           <li><a href="https://github.com/NoorTasfia" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://orcid.org/0009-0005-2074-1118" target="_blank" rel="noopener">ORCID</a></li>
           <li><a href="https://www.researchgate.net/profile/Tasfia-Chowdhury" target="_blank" rel="noopener">ResearchGate</a></li>
+          <li><a href="https://www.youtube.com/@taswhatareyouupto933/videos" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
       </div>
       <div>
@@ -885,6 +940,17 @@
     }
     size(); addEventListener('resize', size); setMode('idle'); count(); requestAnimationFrame(frame);
   })();
+
+  // YouTube: load the player only when a thumbnail is clicked
+  document.querySelectorAll('.vid button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label'); f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+      b.appendChild(f);
+    });
+  });
 
   // Certificate lightbox
   var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');

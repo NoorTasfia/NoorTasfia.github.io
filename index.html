@@ -8,7 +8,7 @@
 <meta property="og:title" content="Tasfia Noor Chowdhury: Robotics & AI Researcher">
 <meta property="og:description" content="Machines that learn from people, built to help people.">
 <meta property="og:image" content="https://noortasfia.github.io/assets/photo.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230F1F05'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%239FFA62'>T</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23111111'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23FFD60A'>T</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Jersey+20&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
     --paper: #ffffff;
     --soft: #f1f1f1;
     --line: #e4e4e4;
-    --lime: #9ffa62;
-    --lime-2: #b7f626;
-    --lime-ink: #2e6b00;
-    --forest: #0f1f05;
+    --sun: #ffd60a;
+    --sun-2: #ffc300;
+    --sun-ink: #9a6b00;
+    --night: #111111;
     --sky: #4bc3ff;
     --radius: 22px;
     --gutter: clamp(16px, 4vw, 48px);
@@ -45,7 +45,7 @@
   .nav.scrolled { border-color: var(--line); }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; }
-  .logo-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--forest); color: var(--lime); display: grid; place-items: center; font-family: var(--pixel); font-size: 1.5rem; line-height: 1; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--night); color: var(--sun); display: grid; place-items: center; font-family: var(--pixel); font-size: 1.5rem; line-height: 1; }
   .nav-links { display: flex; gap: 4px; list-style: none; }
   .nav-links a { display: block; padding: 8px 14px; border-radius: 999px; font-size: .92rem; font-weight: 600; color: var(--ink-2); transition: background .2s, color .2s; }
   .nav-links a:hover { background: var(--soft); color: var(--ink); }
@@ -53,8 +53,8 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-dark { background: var(--ink); color: #fff; }
   .btn-dark:hover { box-shadow: 0 10px 30px rgba(0,0,0,.18); }
-  .btn-lime { background: var(--lime); color: var(--forest); }
-  .btn-lime:hover { background: var(--lime-2); }
+  .btn-sun { background: var(--sun); color: var(--night); }
+  .btn-sun:hover { background: var(--sun-2); }
   .btn-ghost { border: 1.5px solid var(--ink); }
   .btn .arr { transition: transform .2s; }
   .btn:hover .arr { transform: translateX(3px); }
@@ -65,28 +65,87 @@
   .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(40px, 6vw, 72px); }
   .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: end; }
   .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .85rem; font-weight: 700; color: var(--ink-2); background: var(--soft); padding: 7px 14px 7px 8px; border-radius: 999px; margin-bottom: 26px; }
-  .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; }
-  .dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--forest); animation: pulse 1.8s ease-in-out infinite; }
+  .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--sun); display: grid; place-items: center; }
+  .dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--night); animation: pulse 1.8s ease-in-out infinite; }
   @keyframes pulse { 50% { transform: scale(.55); opacity: .6; } }
   h1 { font-size: clamp(2.6rem, 6vw, 5.2rem); line-height: .98; letter-spacing: -.045em; font-weight: 800; }
   h1 .hl { position: relative; white-space: nowrap; }
-  h1 .hl::before { content: ""; position: absolute; left: -.06em; right: -.06em; bottom: .06em; height: .36em; background: var(--lime); z-index: -1; border-radius: 6px; transform-origin: left; animation: swipe 1s .5s cubic-bezier(.2,.8,.2,1) both; }
+  h1 .hl::before { content: ""; position: absolute; left: -.06em; right: -.06em; bottom: .06em; height: .36em; background: var(--sun); z-index: -1; border-radius: 6px; transform-origin: left; animation: swipe 1s .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes swipe { from { transform: scaleX(0); } }
   .keywords { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 28px 0 22px; font-family: var(--pixel); font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--ink-2); }
-  .keywords span::before { content: "/"; color: var(--lime-ink); margin-right: 6px; }
+  .keywords span::before { content: "/"; color: var(--sun-ink); margin-right: 6px; }
   .lead { font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--ink-2); max-width: 600px; }
   .lead b { color: var(--ink); }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  .portrait { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--forest); }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-  .portrait .tag { position: absolute; left: 14px; bottom: 14px; right: 14px; background: rgba(15,31,5,.86); color: #fff; backdrop-filter: blur(8px); padding: 14px 16px; border-radius: 14px; font-size: .86rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
-  .portrait .tag b { color: var(--lime); font-weight: 700; }
+  /* robot playground */
+  .robot { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--night); color: #fff; touch-action: none; user-select: none; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+  .robot canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+  .robot .hud { position: absolute; left: 14px; right: 14px; top: 14px; display: flex; justify-content: space-between; gap: 10px; align-items: start; pointer-events: none; }
+  .robot .mode { font-family: var(--pixel); font-size: 1.25rem; line-height: 1; background: var(--sun); color: var(--night); padding: 7px 11px 5px; border-radius: 9px; }
+  .robot .mode.rec { background: #ff4d4d; color: #fff; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: .55; } }
+  .robot .count { font-family: var(--pixel); font-size: 1.25rem; color: var(--sun); text-align: right; line-height: 1.1; }
+  .robot .count small { display: block; font-family: var(--sans); font-size: .7rem; color: rgba(255,255,255,.6); }
+  .robot .tag { position: absolute; left: 14px; bottom: 14px; right: 14px; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); padding: 12px 14px; border-radius: 14px; font-size: .84rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; pointer-events: none; }
+  .robot .tag b { color: var(--sun); font-weight: 700; }
+  .robot .reset { pointer-events: auto; font: inherit; font-size: .78rem; font-weight: 700; background: none; color: #fff; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 5px 11px; cursor: pointer; white-space: nowrap; }
+  .robot .reset:hover { border-color: var(--sun); color: var(--sun); }
+
+  /* where I write */
+  .write { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; margin-bottom: 18px; }
+  .term { background: var(--night); color: #e8e8e8; border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s; }
+  .term:hover { transform: translateY(-4px); }
+  .term-bar { display: flex; align-items: center; gap: 7px; padding: 14px 18px; border-bottom: 1px solid #262626; font-size: .8rem; color: #9a9a9a; }
+  .term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a3a3a; }
+  .term-bar i:first-child { background: #ff5f57; } .term-bar i:nth-child(2) { background: #febc2e; } .term-bar i:nth-child(3) { background: #28c840; }
+  .term-bar span { margin-left: 8px; }
+  .term-body { padding: clamp(20px, 3vw, 32px); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: .9rem; line-height: 1.75; flex: 1; }
+  .term-body .p { color: var(--sun); }
+  .term-body .c { color: #7d7d7d; }
+  .term-body .url { display: block; font-family: var(--pixel); font-size: clamp(1.9rem, 4vw, 3rem); color: #fff; line-height: 1.05; margin: 10px 0 14px; word-break: break-all; }
+  .term-body .url em { font-style: normal; color: var(--sun); }
+  .caret { display: inline-block; width: .6em; height: 1.1em; background: var(--sun); vertical-align: -.2em; animation: blink 1s steps(2) infinite; }
+  .write-side { display: grid; gap: 18px; }
+  .wcard { border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 8px; transition: transform .3s; }
+  .wcard:hover { transform: translateY(-4px); }
+  .wcard .k { font-family: var(--pixel); font-size: 1.2rem; }
+  .wcard h4 { font-size: 1.15rem; font-weight: 800; letter-spacing: -.01em; }
+  .wcard p { font-size: .9rem; opacity: .8; }
+  .wcard.y { background: var(--sun); color: var(--night); }
+  .wcard.g { background: var(--soft); }
+  .wcard.g .k { color: var(--sun-ink); }
+  .graph { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; margin-bottom: 26px; overflow-x: auto; }
+  .graph h4 { font-size: .95rem; font-weight: 800; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .graph h4 span { font-weight: 600; color: var(--ink-3); font-size: .82rem; }
+  .graph img { width: 100%; min-width: 640px; height: auto; }
+
+  /* certificates */
+  .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .cert { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s, border-color .3s; }
+  .cert:hover { transform: translateY(-5px) rotate(-.4deg); box-shadow: 0 20px 44px rgba(0,0,0,.09); border-color: var(--ink); }
+  .cert button { all: unset; cursor: zoom-in; display: block; aspect-ratio: 900 / 680; background: var(--soft); overflow: hidden; }
+  .cert button:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
+  .cert img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; }
+  .cert:hover img { transform: scale(1.04); }
+  .cert .ci { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .cert .iss { font-family: var(--pixel); font-size: 1.05rem; color: var(--sun-ink); }
+  .cert h4 { font-size: .98rem; font-weight: 800; line-height: 1.3; }
+  .cert .cm { font-size: .8rem; color: var(--ink-3); margin-top: auto; padding-top: 8px; display: flex; justify-content: space-between; gap: 8px; }
+  .cert .cm a { font-weight: 700; color: var(--ink); border-bottom: 2px solid var(--sun); }
+  dialog.lb { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); max-height: 92vh; margin: auto; }
+  dialog.lb::backdrop { background: rgba(10,10,10,.82); backdrop-filter: blur(4px); }
+  dialog.lb img { max-width: 100%; max-height: 84vh; border-radius: 12px; display: block; }
+  dialog.lb p { color: #fff; text-align: center; margin-top: 12px; font-weight: 600; font-size: .92rem; }
+  dialog.lb .x { position: fixed; top: 16px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--sun); color: var(--night); font-size: 1.4rem; font-weight: 800; cursor: pointer; }
+
+  .avatar { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 4px solid var(--sun); flex: none; }
+  .about-head { display: flex; gap: 22px; align-items: center; }
 
   /* ---------- marquee ---------- */
   .marquee { border-block: 1px solid var(--line); overflow: hidden; padding: 18px 0; background: var(--paper); }
   .marquee-track { display: flex; gap: 48px; width: max-content; animation: scroll 38s linear infinite; }
   .marquee span { font-family: var(--pixel); font-size: 1.6rem; color: var(--ink-3); white-space: nowrap; display: inline-flex; align-items: center; gap: 48px; }
-  .marquee span::after { content: "✦"; font-family: var(--sans); font-size: .9rem; color: var(--lime-ink); }
+  .marquee span::after { content: "✦"; font-family: var(--sans); font-size: .9rem; color: var(--sun-ink); }
   @keyframes scroll { to { transform: translateX(-50%); } }
 
   /* ---------- statement ---------- */
@@ -98,7 +157,7 @@
   section { scroll-margin-top: 80px; }
   .sec { padding: clamp(56px, 8vw, 110px) 0; }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vw, 48px); }
-  .label { font-family: var(--pixel); font-size: 1.35rem; color: var(--lime-ink); display: block; margin-bottom: 8px; }
+  .label { font-family: var(--pixel); font-size: 1.35rem; color: var(--sun-ink); display: block; margin-bottom: 8px; }
   h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); letter-spacing: -.04em; line-height: 1.02; font-weight: 800; }
   .sec-head p { max-width: 440px; color: var(--ink-2); }
 
@@ -117,12 +176,12 @@
   .card .links { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
   .chip { font-size: .8rem; font-weight: 700; padding: 7px 13px; border-radius: 999px; border: 1.5px solid currentColor; display: inline-flex; gap: 6px; align-items: center; transition: background .2s, color .2s; }
   .card .bg { position: absolute; inset: 0; z-index: -1; opacity: .9; }
-  .c1 { background: var(--forest); color: #fff; }
-  .c1 .num, .c1 .stat strong { color: var(--lime); }
-  .c1 .chip:hover { background: var(--lime); color: var(--forest); border-color: var(--lime); }
-  .c2 { background: var(--lime); color: var(--forest); }
-  .c2 .when { background: rgba(15,31,5,.1); }
-  .c2 .chip:hover { background: var(--forest); color: var(--lime); border-color: var(--forest); }
+  .c1 { background: var(--night); color: #fff; }
+  .c1 .num, .c1 .stat strong { color: var(--sun); }
+  .c1 .chip:hover { background: var(--sun); color: var(--night); border-color: var(--sun); }
+  .c2 { background: var(--sun); color: var(--night); }
+  .c2 .when { background: rgba(17,17,17,.1); }
+  .c2 .chip:hover { background: var(--night); color: var(--sun); border-color: var(--night); }
   .c3 { background: #0a2a3d; color: #fff; }
   .c3 .num, .c3 .stat strong { color: var(--sky); }
   .c3 .chip:hover { background: var(--sky); color: #0a2a3d; border-color: var(--sky); }
@@ -136,7 +195,7 @@
   /* ---------- values ---------- */
   .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 48px); border-top: 1px solid var(--line); padding-top: 36px; }
   .values h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -.01em; }
-  .values h4::before { content: "/ "; color: var(--lime-ink); }
+  .values h4::before { content: "/ "; color: var(--sun-ink); }
   .values p { color: var(--ink-2); font-size: .97rem; }
 
   /* ---------- capabilities ---------- */
@@ -144,19 +203,19 @@
   .cap { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 24px 6px; border-bottom: 1px solid var(--line); align-items: start; transition: background .25s, padding .25s; }
   .cap:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 24px; }
   .cap:nth-child(even) { padding-left: 24px; }
-  .cap:hover { background: #fafff5; }
-  .cap .n { font-family: var(--pixel); font-size: 1.9rem; color: var(--lime-ink); line-height: 1; }
+  .cap:hover { background: #fffbe6; }
+  .cap .n { font-family: var(--pixel); font-size: 1.9rem; color: var(--sun-ink); line-height: 1; }
   .cap h5 { font-size: 1.12rem; font-weight: 800; margin-bottom: 4px; }
   .cap p { font-size: .9rem; color: var(--ink-3); }
 
   /* ---------- stats ---------- */
-  .stats { background: var(--forest); color: #fff; border-radius: calc(var(--radius) + 8px); padding: clamp(36px, 6vw, 80px); position: relative; overflow: hidden; isolation: isolate; }
-  .stats::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 90% 0%, rgba(159,250,98,.22), transparent 60%), radial-gradient(500px 300px at 0% 100%, rgba(75,195,255,.14), transparent 60%); z-index: -1; }
+  .stats { background: var(--night); color: #fff; border-radius: calc(var(--radius) + 8px); padding: clamp(36px, 6vw, 80px); position: relative; overflow: hidden; isolation: isolate; }
+  .stats::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 90% 0%, rgba(255,214,10,.22), transparent 60%), radial-gradient(500px 300px at 0% 100%, rgba(75,195,255,.14), transparent 60%); z-index: -1; }
   .stats h2 { max-width: 16ch; }
-  .stats h2 em { font-style: normal; color: var(--lime); }
+  .stats h2 em { font-style: normal; color: var(--sun); }
   .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: clamp(32px, 5vw, 64px); }
   .stat-grid div { border-top: 1px solid rgba(255,255,255,.18); padding-top: 18px; }
-  .stat-grid strong { display: block; font-family: var(--pixel); font-weight: 400; font-size: clamp(3.2rem, 7vw, 5.6rem); line-height: .85; color: var(--lime); }
+  .stat-grid strong { display: block; font-family: var(--pixel); font-weight: 400; font-size: clamp(3.2rem, 7vw, 5.6rem); line-height: .85; color: var(--sun); }
   .stat-grid span { font-size: .9rem; color: rgba(255,255,255,.75); }
 
   /* ---------- publications ---------- */
@@ -167,7 +226,7 @@
   .pubs { display: grid; gap: 12px; }
   .pub { display: grid; grid-template-columns: 1fr auto; gap: 18px 28px; align-items: center; padding: 24px clamp(18px, 2.5vw, 30px); border: 1px solid var(--line); border-radius: 18px; transition: border-color .25s, box-shadow .25s, transform .25s; }
   .pub:hover { border-color: var(--ink); box-shadow: 0 14px 40px rgba(0,0,0,.06); }
-  .pub .cat { font-family: var(--pixel); font-size: 1.15rem; color: var(--lime-ink); }
+  .pub .cat { font-family: var(--pixel); font-size: 1.15rem; color: var(--sun-ink); }
   .pub h3 { font-size: clamp(1.02rem, 1.5vw, 1.2rem); font-weight: 800; letter-spacing: -.01em; line-height: 1.3; margin: 4px 0 6px; }
   .pub .authors { font-size: .87rem; color: var(--ink-3); }
   .pub .authors b { color: var(--ink); }
@@ -175,7 +234,7 @@
   .pub .meta span + span::before { content: " / "; color: var(--ink-3); }
   .pub .act { display: flex; gap: 8px; flex-wrap: wrap; justify-content: end; }
   .pub .chip { border-color: var(--line); }
-  .pub .chip:hover { background: var(--lime); border-color: var(--lime); color: var(--forest); }
+  .pub .chip:hover { background: var(--sun); border-color: var(--sun); color: var(--night); }
   .pub[hidden] { display: none; }
 
   /* ---------- github ---------- */
@@ -186,11 +245,11 @@
   .repo .rn svg { flex: none; margin-top: 3px; }
   .repo p { font-size: .88rem; color: var(--ink-2); flex: 1; }
   .repo .rm { display: flex; gap: 14px; font-size: .8rem; color: var(--ink-3); flex-wrap: wrap; }
-  .lang-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; background: var(--lime-ink); }
+  .lang-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; background: var(--sun-ink); }
 
   /* ---------- experience ---------- */
   .exp { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); }
-  .exp h3.col { font-family: var(--pixel); font-size: 1.5rem; font-weight: 400; color: var(--lime-ink); margin-bottom: 8px; }
+  .exp h3.col { font-family: var(--pixel); font-size: 1.5rem; font-weight: 400; color: var(--sun-ink); margin-bottom: 8px; }
   .row { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
   .row h4 { font-size: 1.04rem; font-weight: 800; letter-spacing: -.01em; }
   .row .org { font-size: .9rem; color: var(--ink-2); grid-column: 1; }
@@ -199,17 +258,17 @@
 
   .awards { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
   .award { display: inline-flex; gap: 10px; align-items: center; padding: 10px 16px; border-radius: 999px; background: var(--soft); font-size: .88rem; font-weight: 600; }
-  .award::before { content: "★"; color: var(--lime-ink); }
+  .award::before { content: "★"; color: var(--sun-ink); }
 
   /* ---------- CTA ---------- */
   .cta { text-align: center; padding: clamp(72px, 11vw, 150px) 0 clamp(56px, 8vw, 100px); }
   .cta .big { font-size: clamp(2.6rem, 8vw, 7rem); font-weight: 800; letter-spacing: -.05em; line-height: .95; }
-  .cta .big .pixel { color: var(--lime-ink); font-size: 1.04em; letter-spacing: 0; }
+  .cta .big .pixel { color: var(--sun-ink); font-size: 1.04em; letter-spacing: 0; }
   .cta p { color: var(--ink-2); margin: 22px auto 30px; max-width: 520px; }
   .cta .hero-ctas { justify-content: center; }
   .strip { display: flex; gap: 14px; justify-content: center; margin: 44px 0 0; flex-wrap: wrap; }
   .strip div { padding: 14px 20px; border-radius: 16px; background: var(--soft); font-family: var(--pixel); font-size: 1.35rem; transform: rotate(var(--r, 0deg)); transition: transform .3s; }
-  .strip div:hover { transform: rotate(0) scale(1.06); background: var(--lime); }
+  .strip div:hover { transform: rotate(0) scale(1.06); background: var(--sun); }
 
   /* ---------- footer ---------- */
   footer { background: var(--ink); color: #cfcfcf; padding: clamp(48px, 7vw, 80px) 0 28px; }
@@ -218,7 +277,7 @@
   footer p { font-size: .9rem; max-width: 34ch; }
   footer h6 { color: #fff; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
   footer ul { list-style: none; display: grid; gap: 9px; font-size: .92rem; }
-  footer ul a:hover { color: var(--lime); }
+  footer ul a:hover { color: var(--sun); }
   .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid #2a2a2a; margin-top: 48px; padding-top: 22px; font-size: .82rem; color: #8d8d8d; }
   .foot-word { font-family: var(--pixel); font-size: clamp(4rem, 17vw, 15rem); line-height: .8; color: #1b1b1b; margin-top: 40px; white-space: nowrap; overflow: hidden; user-select: none; }
 
@@ -245,8 +304,9 @@
     .nav.open .menu-btn span:nth-child(2) { opacity: 0; }
     .nav.open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-grid { grid-template-columns: 1fr; }
-    .portrait { max-width: 420px; aspect-ratio: 1 / 1; }
-    .cards, .exp, .values, .caps { grid-template-columns: 1fr; }
+    .robot { aspect-ratio: 1 / 1; }
+    .cards, .exp, .values, .caps, .write { grid-template-columns: 1fr; }
+    .certs { grid-template-columns: repeat(2, 1fr); }
     .cap:nth-child(odd) { border-right: 0; padding-right: 6px; }
     .cap:nth-child(even) { padding-left: 6px; }
     .card { min-height: 0; }
@@ -254,8 +314,9 @@
     .pub .act { justify-content: start; }
   }
   @media (max-width: 560px) {
-    .repos { grid-template-columns: 1fr; }
+    .repos, .certs { grid-template-columns: 1fr; }
     .stat-grid { gap: 18px; }
+    .about-head { flex-direction: column; align-items: start; }
     .foot { grid-template-columns: 1fr; }
     h1 .hl { white-space: normal; }
   }
@@ -269,7 +330,8 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#work">Work</a></li>
       <li><a href="#research">Research</a></li>
-      <li><a href="#github">GitHub</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -288,13 +350,17 @@
         <div class="keywords reveal"><span>Robotics</span><span>AI Research</span><span>Teaching</span></div>
         <p class="lead reveal">Mechatronics engineer and M.Sc. researcher at the <b>University of Dhaka</b>. I work on <b>robot learning from demonstration</b>, <b>medical image analysis</b> and applied machine learning, with <b>six papers</b>, including two at <b>IEEE RAAICON 2026</b> and an <b>ICML 2026 workshop</b> poster.</p>
         <div class="hero-ctas reveal">
-          <a class="btn btn-lime" href="#work">See my work <span class="arr">→</span></a>
+          <a class="btn btn-sun" href="#work">See my work <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#about">About me</a>
         </div>
       </div>
-      <figure class="portrait reveal">
-        <img src="assets/photo.jpg" alt="Portrait of Tasfia Noor Chowdhury" width="400" height="500">
-        <figcaption class="tag"><span>Currently</span><b>Knee-MRI deep learning · MAIM Lab, DU</b></figcaption>
+      <figure class="robot reveal" id="robot" aria-label="Interactive robot arm. Move your pointer and it follows; drag to teach it a path and it replays your demonstration with fifty variations.">
+        <canvas id="robotCanvas"></canvas>
+        <div class="hud">
+          <span class="mode" id="robotMode">FOLLOW ME</span>
+          <span class="count" id="robotCount">1 demo → 0<small>generated skills</small></span>
+        </div>
+        <figcaption class="tag"><span id="robotHint"><b>Drag inside</b> to teach me a path</span><button class="reset" id="robotReset" type="button">Reset</button></figcaption>
       </figure>
     </div>
   </section>
@@ -320,11 +386,12 @@
       </div>
       <div class="cards">
         <article class="card c1 reveal">
-          <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#9FFA62" stroke-width="2"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>
+          <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#FFD60A" stroke-width="2"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>
           <div>
             <div class="top"><span class="num">01</span><span class="when">IEEE RAAICON 2026</span></div>
             <h3>One demonstration, fifty robot skills</h3>
             <p>A webcam hand-tracking interface teaches a simulated Franka Panda arm in MuJoCo. One recorded demo becomes 50 physics-validated training episodes.</p>
+            <img src="assets/gesture-teaching-demo.jpg" alt="A simulated dual Franka Panda robot in MuJoCo lifting a red box while a person controls it with webcam hand gestures" loading="lazy" style="border-radius:14px;margin-top:18px;width:100%;aspect-ratio:16/8;object-fit:cover">
           </div>
           <div>
             <div class="stat"><strong>98%</strong><small>behaviour-cloning success with geometry-preserving augmentation, vs 48% with naive noise</small></div>
@@ -333,7 +400,7 @@
         </article>
 
         <article class="card c2 reveal">
-          <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#0F1F05" stroke-width="2"><path d="M10 90V10h80v80z"/><path d="M30 90V30h40v60"/><path d="M50 90V50"/></svg>
+          <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#111111" stroke-width="2"><path d="M10 90V10h80v80z"/><path d="M30 90V30h40v60"/><path d="M50 90V50"/></svg>
           <div>
             <div class="top"><span class="num">02</span><span class="when">IEEE RAAICON 2026</span></div>
             <h3>Safe warehouse navigation learned from human driving</h3>
@@ -411,7 +478,7 @@
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="stats reveal">
-        <span class="label" style="color:var(--lime)">By the numbers</span>
+        <span class="label" style="color:var(--sun)">By the numbers</span>
         <h2>Research, results and <em>five years</em> in the classroom.</h2>
         <div class="stat-grid">
           <div><strong data-count="6">6</strong><span>papers: IEEE, ICML workshop, journal &amp; arXiv</span></div>
@@ -498,11 +565,44 @@
     </div>
   </section>
 
-  <!-- GITHUB -->
-  <section class="sec" id="github" style="padding-top:0">
+  <!-- WHERE I WRITE (GitHub) -->
+  <section class="sec" id="writing" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="label">Open source</span><h2>On GitHub</h2></div>
+        <div><span class="label">Where I write</span><h2>Notes, code &amp; experiments</h2></div>
+        <p>I write on GitHub: research code, robotics notes, and small tools I build for fun.</p>
+      </div>
+      <div class="write">
+        <a class="term reveal" href="https://github.com/NoorTasfia" target="_blank" rel="noopener">
+          <div class="term-bar"><i></i><i></i><i></i><span>~/tasfia — zsh</span></div>
+          <div class="term-body">
+            <div><span class="p">$</span> whereis tasfia --writing</div>
+            <span class="url">github.com/<em>NoorTasfia</em></span>
+            <div class="c"># robot learning · medical AI · ML notebooks</div>
+            <div><span class="p">$</span> cat README.md | head -1</div>
+            <div>I build AI systems that learn from and help people.</div>
+            <div><span class="p">$</span> open → <span class="caret"></span></div>
+          </div>
+        </a>
+        <div class="write-side">
+          <a class="wcard y reveal" href="https://github.com/NoorTasfia/Robotics-Playbook" target="_blank" rel="noopener">
+            <span class="k">/ notes</span>
+            <h4>Robotics Playbook ↗</h4>
+            <p>An interactive master guide to industrial robotics and automation: hardware, trajectory maths with a calculator, CIM programming and cobots.</p>
+          </a>
+          <a class="wcard g reveal" href="https://github.com/NoorTasfia/A-Hybrid-Data-Driven-Approach-For-Analyzing-And-Predicting-Inpatient-Length-Of-Stay-In-Health-Centre" target="_blank" rel="noopener">
+            <span class="k">/ research code</span>
+            <h4>Hospital length-of-stay notebooks ↗</h4>
+            <p>The code behind my first-author arXiv paper: Spark, PCA and tree ensembles on 2.3M records.</p>
+          </a>
+        </div>
+      </div>
+      <div class="graph reveal">
+        <h4>My GitHub activity <span>Contributions over the past year</span></h4>
+        <img src="https://ghchart.rshah.org/E0A800/NoorTasfia" alt="GitHub contribution chart for NoorTasfia" loading="lazy">
+      </div>
+      <div class="sec-head reveal" id="github" style="margin-bottom:22px">
+        <h3 style="font-size:1.4rem;font-weight:800;letter-spacing:-.02em">Latest repositories</h3>
         <a class="btn btn-dark" href="https://github.com/NoorTasfia" target="_blank" rel="noopener">@NoorTasfia <span class="arr">↗</span></a>
       </div>
       <div class="repos" id="repos">
@@ -515,11 +615,48 @@
     </div>
   </section>
 
+  <!-- CERTIFICATES -->
+  <section class="sec" id="certificates" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="label">Certificates</span><h2>Always learning</h2></div>
+        <p>Leadership, energy and analytics training from 2025. Click a certificate to see it in full.</p>
+      </div>
+      <div class="certs">
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/shoktikonna.jpg" aria-label="View Shoktikonna graduation certificate"><img src="assets/certs/shoktikonna.jpg" alt="Shoktikonna Leadership Cohort certificate of graduation" loading="lazy"></button>
+          <div class="ci"><span class="iss">EU · GIZ · World Bank</span><h4>Shoktikonna Leadership Cohort 2025: Certificate of Graduation</h4><div class="cm"><span>24 Nov 2025 · 4-month programme</span><span>ID SK3251074</span></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/worldbank-energy.jpg" aria-label="View World Bank certificate"><img src="assets/certs/worldbank-energy.jpg" alt="World Bank Open Learning Campus certificate" loading="lazy"></button>
+          <div class="ci"><span class="iss">World Bank Open Learning Campus</span><h4>Technical Foundations of Energy: Transmission Systems</h4><div class="cm"><span>15 Nov 2025</span></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-team-cultures.jpg" aria-label="View Leading Teams: Building Effective Team Cultures certificate"><img src="assets/certs/coursera-team-cultures.jpg" alt="Coursera certificate: Leading Teams: Building Effective Team Cultures" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Building Effective Team Cultures</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/WO92SX9WGWGE" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-developing-leader.jpg" aria-label="View Leading Teams: Developing as a Leader certificate"><img src="assets/certs/coursera-developing-leader.jpg" alt="Coursera certificate: Leading Teams: Developing as a Leader" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Developing as a Leader</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/SKTMF24U33F6" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-business-analytics.jpg" aria-label="View Introduction to Business Analytics certificate"><img src="assets/certs/coursera-business-analytics.jpg" alt="Coursera certificate: Introduction to Business Analytics: Communicating with Data" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Introduction to Business Analytics: Communicating with Data</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/RY8YGSTVGO7R" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-sustainability.jpg" aria-label="View Sustainability Reporting certificate"><img src="assets/certs/coursera-sustainability.jpg" alt="Coursera certificate: Sustainability Reporting: From Regulation to Implementation" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Sustainability Reporting: From Regulation to Implementation</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/5MJQY180HWJF" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <dialog class="lb" id="lightbox"><button class="x" type="button" aria-label="Close">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
+
   <!-- ABOUT / EXPERIENCE -->
   <section class="sec" id="about" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="label">About</span><h2>Education &amp; experience</h2></div>
+        <div class="about-head"><img class="avatar" src="assets/photo.jpg" alt="Tasfia Noor Chowdhury" width="92" height="92"><div><span class="label">About</span><h2>Education &amp; experience</h2></div></div>
         <p>Engineer by training, researcher by choice, teacher by habit. Based in Dhaka, Bangladesh.</p>
       </div>
       <div class="exp">
@@ -556,7 +693,7 @@
       <div class="big reveal">Let's build<br>something <span class="pixel">useful.</span></div>
       <p class="reveal">I'm looking for funded PhD positions in robot learning, human-robot interaction and medical AI. Supervisors and collaborators are welcome to get in touch.</p>
       <div class="hero-ctas reveal">
-        <a class="btn btn-lime" href="mailto:tasfiaa.chowdhury@gmail.com">Email me <span class="arr">→</span></a>
+        <a class="btn btn-sun" href="mailto:tasfiaa.chowdhury@gmail.com">Email me <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="assets/Tasfia_Noor_Chowdhury_CV.pdf" target="_blank" rel="noopener">Full CV</a>
       </div>
       <div class="strip reveal" aria-hidden="true">
@@ -652,6 +789,114 @@
     });
   });
 
+  // Robot arm playground: follows the pointer; drag to record a demo, then it replays it with 50 variations
+  (function () {
+    var box = document.getElementById('robot'), cv = document.getElementById('robotCanvas'), ctx = cv.getContext('2d');
+    var modeEl = document.getElementById('robotMode'), countEl = document.getElementById('robotCount'), hintEl = document.getElementById('robotHint');
+    var SUN = '#FFD60A', W, H, base, L1, L2;
+    var mode = 'idle', demo = [], ghosts = [], shown = 0, play = 0, track = null, tip = null, target = { x: 0, y: 0 };
+
+    function size() {
+      var r = box.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      base = { x: W * .5, y: Math.min(H * .8, H - 100) }; L1 = Math.min(W, H) * .29; L2 = Math.min(W, H) * .25;
+    }
+    function local(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    function setMode(m) {
+      mode = m;
+      modeEl.className = 'mode' + (m === 'record' ? ' rec' : '');
+      modeEl.textContent = { idle: 'MOVE YOUR MOUSE', follow: 'FOLLOW ME', record: '● REC DEMO', replay: 'REPLAY ×50' }[m];
+      hintEl.innerHTML = m === 'replay' ? '<b>1 demo → 50 skills</b>, like my IEEE paper' : m === 'record' ? '<b>Recording…</b> let go to replay' : '<b>Drag inside</b> to teach me a path';
+    }
+    function count() { countEl.innerHTML = '1 demo → ' + shown + '<small>generated skills</small>'; }
+
+    // Two-link inverse kinematics, elbow up
+    function ik(t) {
+      var dx = t.x - base.x, dy = t.y - base.y, a = Math.atan2(dy, dx);
+      var d = Math.max(Math.abs(L1 - L2) + 2, Math.min(L1 + L2 - 2, Math.hypot(dx, dy)));
+      var s = a - Math.acos(Math.max(-1, Math.min(1, (L1 * L1 + d * d - L2 * L2) / (2 * L1 * d))));
+      return { e: { x: base.x + L1 * Math.cos(s), y: base.y + L1 * Math.sin(s) }, h: { x: base.x + d * Math.cos(a), y: base.y + d * Math.sin(a) } };
+    }
+    // Geometry-preserving variations: rotate, scale and shift the whole demo as a rigid shape
+    function makeGhosts() {
+      var cx = 0, cy = 0; demo.forEach(function (p) { cx += p.x; cy += p.y; }); cx /= demo.length; cy /= demo.length;
+      ghosts = [];
+      for (var k = 0; k < 50; k++) {
+        var th = (Math.random() - .5) * .6, sc = .8 + Math.random() * .3, ox = (Math.random() - .5) * W * .3, oy = (Math.random() - .5) * H * .18;
+        var c = Math.cos(th), s = Math.sin(th);
+        ghosts.push(demo.map(function (p) {
+          var x = (p.x - cx) * sc, y = (p.y - cy) * sc;
+          return { x: cx + ox + x * c - y * s, y: cy + oy + x * s + y * c };
+        }));
+      }
+    }
+    function path(pts) { ctx.beginPath(); pts.forEach(function (p, i) { i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }); ctx.stroke(); }
+
+    cv.addEventListener('pointerdown', function (e) { cv.setPointerCapture(e.pointerId); demo = [local(e)]; ghosts = []; shown = 0; count(); setMode('record'); });
+    cv.addEventListener('pointermove', function (e) {
+      var p = local(e);
+      if (mode === 'record') { var l = demo[demo.length - 1]; if (Math.hypot(p.x - l.x, p.y - l.y) > 3) demo.push(p); }
+      else if (mode !== 'replay') setMode('follow');
+      if (mode !== 'replay') target = p;
+    });
+    cv.addEventListener('pointerup', function () {
+      if (mode !== 'record') return;
+      if (demo.length > 10) { makeGhosts(); track = demo; play = 0; setMode('replay'); } else { demo = []; setMode('follow'); }
+    });
+    cv.addEventListener('pointerleave', function () { if (mode === 'follow') setMode('idle'); });
+    document.getElementById('robotReset').addEventListener('click', function () { demo = []; ghosts = []; shown = 0; count(); setMode('idle'); });
+
+    function frame(t) {
+      if (mode === 'idle') target = { x: base.x + L1 * 1.1 * Math.sin(t * .0009), y: base.y - (L1 + L2) * .62 + H * .08 * Math.sin(t * .0021) };
+      if (mode === 'replay') {
+        play += .7;
+        if (play >= track.length) { play = 0; track = ghosts[Math.floor(Math.random() * ghosts.length)]; }
+        if (shown < 50 && Math.random() < .35) { shown++; count(); }
+        target = track[Math.floor(play)];
+      }
+      if (!tip) tip = { x: target.x, y: target.y };
+      tip.x += (target.x - tip.x) * .16; tip.y += (target.y - tip.y) * .16;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(255,255,255,.07)';
+      for (var gx = 11; gx < W; gx += 22) for (var gy = 11; gy < H; gy += 22) ctx.fillRect(gx, gy, 1.5, 1.5);
+      ctx.lineCap = ctx.lineJoin = 'round';
+      ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(255,214,10,.16)';
+      ghosts.slice(0, shown).forEach(path);
+      if (demo.length > 1) { ctx.lineWidth = 2.5; ctx.strokeStyle = mode === 'record' ? '#ff4d4d' : SUN; path(demo); }
+
+      var j = ik(tip), ang = Math.atan2(j.h.y - j.e.y, j.h.x - j.e.x);
+      ctx.fillStyle = '#2a2a2a'; ctx.fillRect(base.x - 46, base.y + 10, 92, 14);
+      ctx.fillStyle = '#3a3a3a'; ctx.beginPath(); ctx.arc(base.x, base.y + 10, 30, Math.PI, 0); ctx.fill();
+      ctx.strokeStyle = SUN; ctx.lineWidth = 18; ctx.beginPath(); ctx.moveTo(base.x, base.y); ctx.lineTo(j.e.x, j.e.y); ctx.stroke();
+      ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(j.e.x, j.e.y); ctx.lineTo(j.h.x, j.h.y); ctx.stroke();
+      // gripper fingers
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 4;
+      [-1, 1].forEach(function (sd) {
+        var o = ang + sd * .55; ctx.beginPath(); ctx.moveTo(j.h.x, j.h.y);
+        ctx.lineTo(j.h.x + 16 * Math.cos(o), j.h.y + 16 * Math.sin(o)); ctx.lineTo(j.h.x + 26 * Math.cos(ang + sd * .2), j.h.y + 26 * Math.sin(ang + sd * .2)); ctx.stroke();
+      });
+      [base, j.e, j.h].forEach(function (p, i) {
+        ctx.fillStyle = '#111'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(p.x, p.y, i ? 8 : 11, 0, 7); ctx.fill(); ctx.stroke();
+      });
+      if (mode === 'follow') { ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(target.x, target.y, 10, 0, 7); ctx.stroke(); }
+      requestAnimationFrame(frame);
+    }
+    size(); addEventListener('resize', size); setMode('idle'); count(); requestAnimationFrame(frame);
+  })();
+
+  // Certificate lightbox
+  var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.cert button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lbImg.src = b.dataset.full; lbImg.alt = b.querySelector('img').alt;
+      document.getElementById('lbCap').textContent = b.closest('.cert').querySelector('h4').textContent;
+      lb.showModal();
+    });
+  });
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('x')) lb.close(); });
+
   // Live GitHub repositories (falls back to the static list above)
   var LANG = { 'Python': '#3572A5', 'Jupyter Notebook': '#DA5B0B', 'HTML': '#e34c26', 'JavaScript': '#f1e05a', 'C++': '#f34b7d', 'C': '#555555', 'MATLAB': '#e16737', 'TypeScript': '#3178c6', 'CSS': '#563d7c' };
   var SKIP = ['NoorTasfia', 'NoorTasfia.github.io'];
@@ -663,7 +908,7 @@
       list = list.filter(function (r) { return !r.fork && SKIP.indexOf(r.name) < 0 && r.description; });
       if (!list.length) return;
       document.getElementById('repos').innerHTML = list.slice(0, 9).map(function (r) {
-        var lang = r.language ? '<span><i class="lang-dot" style="background:' + (LANG[r.language] || '#2e6b00') + '"></i>' + esc(r.language) + '</span>' : '';
+        var lang = r.language ? '<span><i class="lang-dot" style="background:' + (LANG[r.language] || '#9a6b00') + '"></i>' + esc(r.language) + '</span>' : '';
         var stars = r.stargazers_count ? '<span>★ ' + r.stargazers_count + '</span>' : '';
         var upd = '<span>Updated ' + new Date(r.pushed_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) + '</span>';
         return '<a class="repo" href="' + esc(r.html_url) + '" target="_blank" rel="noopener"><span class="rn">' + esc(NAMES[r.name] || r.name) + '</span><p>' + esc(r.description) + '</p><span class="rm">' + lang + stars + upd + '</span></a>';

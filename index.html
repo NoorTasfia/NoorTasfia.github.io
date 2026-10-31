@@ -123,19 +123,15 @@
   .graph h4 { font-size: .95rem; font-weight: 800; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
   .graph h4 span { font-weight: 600; color: var(--ink-3); font-size: .82rem; }
   .graph img { width: 100%; min-width: 640px; height: auto; }
-  .news { display: grid; grid-template-columns: 1fr 1.25fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; }
-  .news-head { background: var(--soft); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 10px; }
-  .news-head .k { font-family: var(--pixel); font-size: 1.2rem; color: var(--sun-ink); }
-  .news-head h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
-  .news-head p { font-size: 1rem; line-height: 1.55; color: var(--ink-3); }
-  .news-head .meta { font-size: .88rem; font-weight: 700; color: var(--ink); }
-  .news-head .btn { align-self: flex-start; margin-top: auto; }
-  .news-list { list-style: none; margin: 0; padding: 8px clamp(18px, 2.6vw, 28px); display: flex; flex-direction: column; justify-content: center; }
-  .news-list li + li { border-top: 1px solid var(--line); }
-  .news-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 15px 0; }
-  .news-list b { font-size: 1rem; font-weight: 700; line-height: 1.4; transition: color .2s; }
-  .news-list a:hover b { color: var(--sun-ink); }
-  .news-list time { font-size: .85rem; color: var(--ink-3); white-space: nowrap; }
+  .news { display: flex; align-items: center; gap: 18px 24px; flex-wrap: wrap; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; margin-top: 18px; transition: border-color .2s; }
+  .news:hover { border-color: var(--sun-2); }
+  .news .k { font-family: var(--pixel); font-size: 1.2rem; color: var(--sun-ink); }
+  .news > div { flex: 1; min-width: 240px; }
+  .news h3 { font-size: 1.15rem; font-weight: 800; letter-spacing: -.01em; }
+  .news p { font-size: .95rem; color: var(--ink-3); margin-top: 2px; }
+  .news p b { color: var(--ink); }
+  .pub .role { font-size: .9rem; color: var(--ink-2); margin-top: 6px; }
+  .pub .role b { color: var(--sun-ink); }
 
   /* videos */
   .btn-yt { background: #ff0033; color: #fff; }
@@ -160,7 +156,7 @@
   .vid.big h4 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: -.02em; line-height: 1.15; }
 
   /* certificates */
-  .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .certs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
   .cert { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s, border-color .3s; }
   .cert:hover { transform: translateY(-5px) rotate(-.4deg); box-shadow: 0 20px 44px rgba(0,0,0,.09); border-color: var(--ink); }
   .cert button { all: unset; cursor: zoom-in; display: block; aspect-ratio: 900 / 680; background: var(--soft); overflow: hidden; }
@@ -169,7 +165,7 @@
   .cert:hover img { transform: scale(1.04); }
   .cert .ci { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
   .cert .iss { font-family: var(--pixel); font-size: 1.05rem; color: var(--sun-ink); }
-  .cert h4 { font-size: 1rem; font-weight: 800; line-height: 1.3; }
+  .cert h4 { font-size: .92rem; font-weight: 800; line-height: 1.3; }
   .cert .cm { font-size: .86rem; color: var(--ink-3); margin-top: auto; padding-top: 8px; display: flex; justify-content: space-between; gap: 8px; }
   .cert .cm a { font-weight: 700; color: var(--ink); border-bottom: 2px solid var(--sun); }
   dialog.lb { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); max-height: 92vh; margin: auto; }
@@ -345,8 +341,8 @@
     .nav.open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-grid { grid-template-columns: 1fr; }
     .robot { aspect-ratio: 1 / 1; }
-    .cards, .exp, .values, .caps, .write, .news { grid-template-columns: 1fr; }
-    .certs { grid-template-columns: repeat(2, 1fr); }
+    .cards, .exp, .values, .caps, .write { grid-template-columns: 1fr; }
+    .certs { grid-template-columns: repeat(3, 1fr); }
     .vids { grid-template-columns: 1fr 1fr; }
     .vid.big { flex-direction: column; }
     .vid.big button { flex: none; }
@@ -378,11 +374,11 @@
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Tasfia Noor Chowdhury, home"><span class="logo-mark">T</span>Tasfia N.C.</a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#direction">Direction</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="#research">Research</a></li>
+      <li><a href="#research">Publications</a></li>
       <li><a href="#writing">Writing</a></li>
       <li><a href="#videos">Videos</a></li>
-      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -433,6 +429,21 @@
   <!-- STATEMENT -->
   <section class="statement">
     <div class="wrap"><p class="reveal">A good model is one people can <span class="soft">trust,</span> not just one that scores well.</p></div>
+  </section>
+
+  <!-- RESEARCH DIRECTION -->
+  <section class="sec" id="direction" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="label">Research direction</span><h2>What I want to work on next</h2></div>
+        <p>I want robots and AI systems that learn from people quickly and can be trusted around them. My PhD goal is to bring three strands of my work together.</p>
+      </div>
+      <div class="values">
+        <div class="reveal"><h4>Learning from few demonstrations</h4><p>Robots that pick up a skill from one or a few human demonstrations and still generalise safely. This builds on our one-demo-to-fifty work in MuJoCo.</p></div>
+        <div class="reveal"><h4>Reading the human through wearables</h4><p>Using motion and muscle signals (IMU, EMG) to understand what a person intends, so a robot or assistive device can adapt to them.</p></div>
+        <div class="reveal"><h4>AI that knows when it is unsure</h4><p>Uncertainty-aware deep learning for medical imaging, starting from my M.Sc. thesis on knee MRI at the University of Dhaka.</p></div>
+      </div>
+    </div>
   </section>
 
   <!-- WORK -->
@@ -603,6 +614,7 @@
             <h3>AI-Driven Water Segmentation with Deep Learning Models for Enhanced Flood Monitoring</h3>
             <div class="authors">S. A. Mou, <b>T. N. Chowdhury</b>, A. I. Mannan, S. N. Mim, L. Tarannum, T. Noman, J. U. Ahamed</div>
             <div class="meta"><span>Preprint</span><span>Semantic segmentation</span><span>DeepLab v3 90.57%</span></div>
+            <div class="role"><b>My role:</b> conceptualisation, methodology, formal analysis and validation.</div>
           </div>
           <div class="act"><a class="chip" href="https://arxiv.org/abs/2501.08266" target="_blank" rel="noopener">arXiv ↗</a></div>
         </article>
@@ -612,6 +624,7 @@
             <h3>A Hybrid Data-Driven Approach for Analyzing and Predicting Inpatient Length of Stay in Health Care Centers</h3>
             <div class="authors"><b>T. N. Chowdhury</b>, S. A. Mou, K. N. Rahman</div>
             <div class="meta"><span>Preprint (B.Sc. thesis)</span><span>Spark on AWS</span><span>2.3M records</span></div>
+            <div class="role"><b>My role:</b> first author; this paper is my B.Sc. thesis.</div>
           </div>
           <div class="act">
             <a class="chip" href="https://arxiv.org/abs/2501.18535" target="_blank" rel="noopener">arXiv ↗</a>
@@ -627,22 +640,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="label">Where I write</span><h2>Notes, code &amp; experiments</h2></div>
-        <p>I write a weekly newsletter on LinkedIn, and on GitHub I share research code, robotics notes and small tools I build for fun.</p>
-      </div>
-      <div class="news reveal">
-        <div class="news-head">
-          <span class="k">/ newsletter</span>
-          <h3>Insight Unveiled</h3>
-          <p>A simple space where I share the insights of little things that make life clearer and better.</p>
-          <span class="meta">Published weekly on LinkedIn</span>
-          <a class="btn btn-dark" href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener">Read &amp; subscribe <span class="arr">↗</span></a>
-        </div>
-        <ul class="news-list">
-          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Everyone owns the roof. Nobody uses it.</b><time datetime="2026-10-30">Oct 2026</time></a></li>
-          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Giving Robots a Sense of “Up”</b><time datetime="2026-03-02">Mar 2026</time></a></li>
-          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Stop Letting a “Broke Mindset” Run Your Life</b><time datetime="2025-12-31">Dec 2025</time></a></li>
-          <li><a href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener"><b>Tremors: It Might Not Be Parkinson’s. The B2 &amp; CoQ10 Connection</b><time datetime="2025-12-12">Dec 2025</time></a></li>
-        </ul>
+        <p>On GitHub I share research code, robotics notes and small tools I build. I also write a weekly newsletter on LinkedIn.</p>
       </div>
       <div class="write">
         <a class="term reveal" href="https://github.com/NoorTasfia" target="_blank" rel="noopener">
@@ -669,10 +667,6 @@
           </a>
         </div>
       </div>
-      <div class="graph reveal">
-        <h4>My GitHub activity <span>Contributions over the past year</span></h4>
-        <img src="https://ghchart.rshah.org/E0A800/NoorTasfia" alt="GitHub contribution chart for NoorTasfia" loading="lazy">
-      </div>
       <div class="sec-head reveal" id="github" style="margin-bottom:22px">
         <h3 style="font-size:1.4rem;font-weight:800;letter-spacing:-.02em">Latest repositories</h3>
         <a class="btn btn-dark" href="https://github.com/NoorTasfia" target="_blank" rel="noopener">@NoorTasfia <span class="arr">↗</span></a>
@@ -684,6 +678,11 @@
         <a class="repo" href="https://github.com/NoorTasfia/Zakat-Calculator-with-different-Purities" target="_blank" rel="noopener"><span class="rn">Zakat-Calculator-with-different-Purities</span><p>Zakat Pro: calculates Zakat on gold, silver and liquid assets of different purities, with a "Golden Glass" interface.</p><span class="rm"><span><i class="lang-dot"></i>HTML</span></span></a>
         <a class="repo" href="https://github.com/NoorTasfia/City-Tech-IT" target="_blank" rel="noopener"><span class="rn">City-Tech-IT</span><p>Business portfolio website for City Tech IT</p><span class="rm"><span><i class="lang-dot"></i>HTML</span></span></a>
       </div>
+      <a class="news reveal" href="https://www.linkedin.com/newsletters/insight-unveiled-7402220966640357376/" target="_blank" rel="noopener">
+        <span class="k">/ newsletter</span>
+        <div><h3>Insight Unveiled</h3><p>My weekly LinkedIn newsletter. Latest on robotics: <b>Giving Robots a Sense of “Up”</b> (Mar 2026)</p></div>
+        <span class="btn btn-dark">Read on LinkedIn <span class="arr">↗</span></span>
+      </a>
     </div>
   </section>
 
@@ -715,42 +714,6 @@
     </div>
   </section>
 
-  <!-- CERTIFICATES -->
-  <section class="sec" id="certificates" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><span class="label">Certificates</span><h2>Always learning</h2></div>
-        <p>Leadership, energy and analytics training from 2025. Click a certificate to see it in full.</p>
-      </div>
-      <div class="certs">
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/shoktikonna.jpg" aria-label="View Shoktikonna graduation certificate"><img src="assets/certs/shoktikonna.jpg" alt="Shoktikonna Leadership Cohort certificate of graduation" loading="lazy"></button>
-          <div class="ci"><span class="iss">EU · GIZ · World Bank</span><h4>Shoktikonna Leadership Cohort 2025: Certificate of Graduation</h4><div class="cm"><span>24 Nov 2025 · 4-month programme</span><span>ID SK3251074</span></div></div>
-        </article>
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/worldbank-energy.jpg" aria-label="View World Bank certificate"><img src="assets/certs/worldbank-energy.jpg" alt="World Bank Open Learning Campus certificate" loading="lazy"></button>
-          <div class="ci"><span class="iss">World Bank Open Learning Campus</span><h4>Technical Foundations of Energy: Transmission Systems</h4><div class="cm"><span>15 Nov 2025</span></div></div>
-        </article>
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/coursera-team-cultures.jpg" aria-label="View Leading Teams: Building Effective Team Cultures certificate"><img src="assets/certs/coursera-team-cultures.jpg" alt="Coursera certificate: Leading Teams: Building Effective Team Cultures" loading="lazy"></button>
-          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Building Effective Team Cultures</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/WO92SX9WGWGE" target="_blank" rel="noopener">Verify ↗</a></div></div>
-        </article>
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/coursera-developing-leader.jpg" aria-label="View Leading Teams: Developing as a Leader certificate"><img src="assets/certs/coursera-developing-leader.jpg" alt="Coursera certificate: Leading Teams: Developing as a Leader" loading="lazy"></button>
-          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Developing as a Leader</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/SKTMF24U33F6" target="_blank" rel="noopener">Verify ↗</a></div></div>
-        </article>
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/coursera-business-analytics.jpg" aria-label="View Introduction to Business Analytics certificate"><img src="assets/certs/coursera-business-analytics.jpg" alt="Coursera certificate: Introduction to Business Analytics: Communicating with Data" loading="lazy"></button>
-          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Introduction to Business Analytics: Communicating with Data</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/RY8YGSTVGO7R" target="_blank" rel="noopener">Verify ↗</a></div></div>
-        </article>
-        <article class="cert reveal">
-          <button type="button" data-full="assets/certs/coursera-sustainability.jpg" aria-label="View Sustainability Reporting certificate"><img src="assets/certs/coursera-sustainability.jpg" alt="Coursera certificate: Sustainability Reporting: From Regulation to Implementation" loading="lazy"></button>
-          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Sustainability Reporting: From Regulation to Implementation</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/5MJQY180HWJF" target="_blank" rel="noopener">Verify ↗</a></div></div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <dialog class="lb" id="lightbox"><button class="x" type="button" aria-label="Close">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
 
   <!-- ABOUT / EXPERIENCE -->
   <section class="sec" id="about" style="padding-top:0">
@@ -787,6 +750,42 @@
     </div>
   </section>
 
+  <!-- CERTIFICATES -->
+  <section class="sec" id="certificates" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="label">Certificates</span><h2>Training &amp; certificates</h2></div>
+        <p>Leadership, energy and analytics training from 2025. Click a certificate to see it in full.</p>
+      </div>
+      <div class="certs">
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/shoktikonna.jpg" aria-label="View Shoktikonna graduation certificate"><img src="assets/certs/shoktikonna.jpg" alt="Shoktikonna Leadership Cohort certificate of graduation" loading="lazy"></button>
+          <div class="ci"><span class="iss">EU · GIZ · World Bank</span><h4>Shoktikonna Leadership Cohort 2025: Certificate of Graduation</h4><div class="cm"><span>24 Nov 2025 · 4-month programme</span></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/worldbank-energy.jpg" aria-label="View World Bank certificate"><img src="assets/certs/worldbank-energy.jpg" alt="World Bank Open Learning Campus certificate" loading="lazy"></button>
+          <div class="ci"><span class="iss">World Bank Open Learning Campus</span><h4>Technical Foundations of Energy: Transmission Systems</h4><div class="cm"><span>15 Nov 2025</span></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-team-cultures.jpg" aria-label="View Leading Teams: Building Effective Team Cultures certificate"><img src="assets/certs/coursera-team-cultures.jpg" alt="Coursera certificate: Leading Teams: Building Effective Team Cultures" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Building Effective Team Cultures</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/WO92SX9WGWGE" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-developing-leader.jpg" aria-label="View Leading Teams: Developing as a Leader certificate"><img src="assets/certs/coursera-developing-leader.jpg" alt="Coursera certificate: Leading Teams: Developing as a Leader" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Leading Teams: Developing as a Leader</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/SKTMF24U33F6" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-business-analytics.jpg" aria-label="View Introduction to Business Analytics certificate"><img src="assets/certs/coursera-business-analytics.jpg" alt="Coursera certificate: Introduction to Business Analytics: Communicating with Data" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Introduction to Business Analytics: Communicating with Data</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/RY8YGSTVGO7R" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+        <article class="cert reveal">
+          <button type="button" data-full="assets/certs/coursera-sustainability.jpg" aria-label="View Sustainability Reporting certificate"><img src="assets/certs/coursera-sustainability.jpg" alt="Coursera certificate: Sustainability Reporting: From Regulation to Implementation" loading="lazy"></button>
+          <div class="ci"><span class="iss">Univ. of Illinois · Coursera</span><h4>Sustainability Reporting: From Regulation to Implementation</h4><div class="cm"><span>Nov 2025</span><a href="https://coursera.org/verify/5MJQY180HWJF" target="_blank" rel="noopener">Verify ↗</a></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <dialog class="lb" id="lightbox"><button class="x" type="button" aria-label="Close">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="wrap">

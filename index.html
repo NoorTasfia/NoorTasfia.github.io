@@ -226,6 +226,14 @@
   .c4 .when { background: #fff; }
   .c4 .num, .c4 .stat strong { color: var(--ink); }
   .c4 .chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(18px, 3vw, 36px); align-items: center; background: #0a2a3d; color: #fff; }
+  .card.wide .num, .card.wide .stat strong { color: var(--sun); }
+  .card.wide .chip:hover { background: var(--sun); color: var(--night); border-color: var(--sun); }
+  .card.wide .shot { display: block; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.15); }
+  .card.wide .shot img { width: 100%; transition: transform .5s; }
+  .card.wide:hover .shot img { transform: scale(1.03); }
+  .card.wide .new { font-size: .78rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: var(--sun); color: var(--night); margin-left: 8px; vertical-align: middle; }
+  @media (max-width: 860px) { .card.wide { grid-template-columns: 1fr; } }
   .card svg.art { position: absolute; right: -30px; top: -30px; width: 260px; height: 260px; z-index: -1; opacity: .16; }
   .more-row { display: flex; justify-content: center; margin-top: 30px; }
 
@@ -452,13 +460,24 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="label">Selected work</span><h2>Key projects</h2></div>
-        <p>Four projects, from robot arms that learn from one demonstration to hospital data at scale.</p>
+        <p>Five projects, from wearable sensing for exoskeletons and robot arms that learn from one demonstration to hospital data at scale.</p>
       </div>
       <div class="cards">
+        <article class="card wide reveal">
+          <div>
+            <div class="top"><span class="num">01</span><span class="when">2026 · independent<span class="new">NEW</span></span></div>
+            <h3>Predicting a person's next step to control a knee exoskeleton</h3>
+            <p>Wearable IMU, EMG and goniometer signals predict whether someone is about to walk, take a ramp, use stairs or stop. The prediction then switches the controller of a simulated knee exoskeleton in MuJoCo.</p>
+            <div class="stat"><strong>3.3×</strong><small>lower knee-tracking error than a fixed controller; 8.5% mode error on unseen people</small></div>
+            <div class="links"><a class="chip" href="projects/knee-exo/">Project page &amp; video ↗</a><a class="chip" href="projects/knee-exo/report.pdf" target="_blank" rel="noopener">Report ↗</a></div>
+          </div>
+          <a class="shot" href="projects/knee-exo/" aria-label="Open the knee exoskeleton project page"><img src="projects/knee-exo/card.jpg" alt="MuJoCo knee exoskeleton: oracle, classifier and fixed controllers side by side" loading="lazy"></a>
+        </article>
+
         <article class="card c1 reveal">
           <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#FFD60A" stroke-width="2"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>
           <div>
-            <div class="top"><span class="num">01</span><span class="when">IEEE RAAICON 2026</span></div>
+            <div class="top"><span class="num">02</span><span class="when">IEEE RAAICON 2026</span></div>
             <h3>One demonstration, fifty robot skills</h3>
             <p>A webcam hand-tracking interface teaches a simulated Franka Panda arm in MuJoCo. One recorded demo becomes 50 physics-validated training episodes.</p>
           </div>
@@ -471,7 +490,7 @@
         <article class="card c2 reveal">
           <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#111111" stroke-width="2"><path d="M10 90V10h80v80z"/><path d="M30 90V30h40v60"/><path d="M50 90V50"/></svg>
           <div>
-            <div class="top"><span class="num">02</span><span class="when">IEEE RAAICON 2026</span></div>
+            <div class="top"><span class="num">03</span><span class="when">IEEE RAAICON 2026</span></div>
             <h3>Safe warehouse navigation learned from human driving</h3>
             <p>A TurtleBot3 learns local navigation from teleoperation in a Webots warehouse (ROS 2 Jazzy), wrapped in a safety layer that reasons about gaps between moving obstacles.</p>
           </div>
@@ -484,7 +503,7 @@
         <article class="card c3 reveal">
           <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#4BC3FF" stroke-width="2"><path d="M0 40q12-10 25 0t25 0 25 0 25 0"/><path d="M0 60q12-10 25 0t25 0 25 0 25 0"/><path d="M0 80q12-10 25 0t25 0 25 0 25 0"/></svg>
           <div>
-            <div class="top"><span class="num">03</span><span class="when">arXiv 2025</span></div>
+            <div class="top"><span class="num">04</span><span class="when">arXiv 2025</span></div>
             <h3>AI-driven flood monitoring</h3>
             <p>Pixel-wise water segmentation for emergency response, trained on a new dataset that combines benchmark, drone, in-field and social-media flood images.</p>
           </div>
@@ -497,7 +516,7 @@
         <article class="card c4 reveal">
           <svg class="art" viewBox="0 0 100 100" fill="none" stroke="#0b0b0b" stroke-width="2"><path d="M42 10h16v32h32v16H58v32H42V58H10V42h32z"/></svg>
           <div>
-            <div class="top"><span class="num">04</span><span class="when">B.Sc. thesis · arXiv 2025</span></div>
+            <div class="top"><span class="num">05</span><span class="when">B.Sc. thesis · arXiv 2025</span></div>
             <h3>Predicting how long patients stay in hospital</h3>
             <p>A Spark pipeline on AWS over New York inpatient records, finding what drives length of stay and predicting it at admission with tree ensembles, process mining and simulation.</p>
           </div>

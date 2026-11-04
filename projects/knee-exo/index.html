@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knee Exo Intent · Tasfia Noor Chowdhury</title>
+<meta name="description" content="Locomotion-intent recognition from wearable sensors, driving a mode-switching knee exoskeleton in MuJoCo. 8.5% error on unseen people; 3.3x lower knee-tracking error than a fixed controller.">
+<meta property="og:title" content="Does locomotion-intent recognition make a knee exoskeleton better?">
+<meta property="og:description" content="Wearable-sensor mode recognition (ENABL3S, 10 subjects, leave-one-subject-out) closed-loop with a simulated knee exoskeleton in MuJoCo.">
+<meta property="og:image" content="https://noortasfia.github.io/projects/knee-exo/sim-poster.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23111111'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23FFD60A'>T</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jersey+20&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b0b0b; --ink-2: #3d3d3d; --ink-3: #575757; --paper: #fff; --soft: #f1f1f1; --line: #e4e4e4;
+    --sun: #ffd60a; --sun-2: #ffc300; --sun-ink: #9a6b00; --night: #111; --sky: #4bc3ff;
+    --radius: 22px; --gutter: clamp(16px, 4vw, 48px); --max: 1100px;
+    --pixel: "Jersey 20", ui-monospace, monospace;
+    --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img, video { display: block; max-width: 100%; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .pixel { font-family: var(--pixel); }
+
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; }
+  .logo-mark { width: 32px; height: 32px; border-radius: 10px; background: var(--night); color: var(--sun); display: grid; place-items: center; font-family: var(--pixel); font-size: 1.4rem; }
+  .back { font-weight: 700; font-size: .92rem; text-decoration: none; padding: 8px 14px; border-radius: 999px; }
+  .back:hover { background: var(--soft); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; font-weight: 700; font-size: .95rem; text-decoration: none; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-sun { background: var(--sun); color: var(--night); }
+  .btn-sun:hover { background: var(--sun-2); }
+  .btn-ghost { border: 1.5px solid var(--ink); }
+
+  header.hero { padding: clamp(36px, 6vw, 72px) 0 clamp(24px, 4vw, 40px); }
+  .label { font-family: var(--pixel); font-size: 1.3rem; color: var(--sun-ink); display: block; margin-bottom: 6px; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 800; max-width: 22ch; }
+  h1 .hl { background: linear-gradient(transparent 62%, var(--sun) 62%); }
+  .lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--ink-2); max-width: 62ch; margin-top: 16px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .meta span { font-size: .85rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--soft); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+  .player { border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: 0 18px 50px rgba(0,0,0,.14); }
+  .player video { width: 100%; aspect-ratio: 1440 / 816; background: #000; }
+  .cap { font-size: .9rem; color: var(--ink-3); margin-top: 10px; }
+
+  .glance { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: clamp(32px, 5vw, 56px) 0 0; }
+  .glance div { background: var(--night); color: #fff; border-radius: 18px; padding: 20px; }
+  .glance strong { display: block; font-family: var(--pixel); font-weight: 400; font-size: clamp(2.4rem, 4vw, 3.2rem); line-height: .9; color: var(--sun); }
+  .glance span { font-size: .92rem; color: rgba(255,255,255,.85); display: block; margin-top: 8px; line-height: 1.4; }
+
+  section { padding: clamp(40px, 6vw, 72px) 0 0; }
+  h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); letter-spacing: -.025em; line-height: 1.15; font-weight: 800; margin-bottom: 14px; }
+  h3 { font-size: 1.15rem; font-weight: 800; margin: 22px 0 6px; }
+  p + p { margin-top: 12px; }
+  .prose { max-width: 70ch; color: var(--ink-2); }
+  .prose b { color: var(--ink); }
+
+  .pipe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 22px; counter-reset: s; }
+  .pipe div { border: 1.5px solid var(--line); border-radius: 16px; padding: 16px; position: relative; }
+  .pipe div::before { counter-increment: s; content: "0" counter(s); font-family: var(--pixel); font-size: 1.6rem; color: var(--sun-ink); display: block; line-height: 1; margin-bottom: 6px; }
+  .pipe h4 { font-size: 1rem; font-weight: 800; line-height: 1.25; }
+  .pipe p { font-size: .88rem; color: var(--ink-3); margin-top: 6px; line-height: 1.45; }
+  .pipe div.last { background: var(--sun); border-color: var(--sun); }
+  .pipe div.last::before, .pipe div.last p { color: var(--night); }
+
+  figure { margin: 18px 0 0; }
+  figure img { border-radius: 14px; border: 1px solid var(--line); background: #fff; width: 100%; }
+  figcaption { font-size: .88rem; color: var(--ink-3); margin-top: 8px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+
+  .tbl { width: 100%; overflow-x: auto; margin-top: 16px; }
+  table { border-collapse: collapse; width: 100%; min-width: 460px; font-size: .95rem; }
+  th, td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); }
+  tr.best td { font-weight: 800; background: #fff8d6; }
+
+  .note { background: var(--soft); border-radius: 18px; padding: 20px 22px; margin-top: 18px; }
+  .note ul { margin: 6px 0 0 18px; }
+  .note li { margin: 4px 0; color: var(--ink-2); }
+  .next { background: var(--night); color: #fff; border-radius: var(--radius); padding: clamp(24px, 4vw, 40px); }
+  .next h2 { color: #fff; }
+  .next p { color: rgba(255,255,255,.82); max-width: 66ch; }
+  .next .label { color: var(--sun); }
+
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tools span { font-size: .85rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--line); }
+
+  footer { margin-top: clamp(48px, 7vw, 88px); border-top: 1px solid var(--line); padding: 24px 0 40px; font-size: .9rem; color: var(--ink-3); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 860px) {
+    .glance { grid-template-columns: 1fr 1fr; }
+    .pipe { grid-template-columns: 1fr 1fr; }
+    .two { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .pipe { grid-template-columns: 1fr; }
+    .back span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-mark">T</span>Tasfia N.C.</a>
+    <a class="back" href="/#work">← <span>All projects</span></a>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="wrap">
+    <span class="label">Project · wearable sensing → assistive robotics · 2026</span>
+    <h1>Does knowing a person's <span class="hl">next step</span> make a knee exoskeleton better?</h1>
+    <p class="lead">I trained classifiers that predict, from body-worn sensors, whether a person is about to walk, take a ramp, climb or descend stairs, or stop. I then used their predictions to switch the controller of a simulated knee exoskeleton in MuJoCo and measured how much better it follows the knee.</p>
+    <div class="meta"><span>Independent project</span><span>Python · scikit-learn · PyTorch · MuJoCo</span><span>Public data: ENABL3S</span></div>
+    <div class="ctas">
+      <a class="btn btn-sun" href="#video">Watch the 90-s demo ▶</a>
+      <a class="btn btn-ghost" href="report.pdf" target="_blank" rel="noopener">Read the report (PDF) ↗</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="video">
+  <div class="player">
+    <video controls preload="metadata" playsinline poster="demo-poster.jpg">
+      <source src="demo.mp4" type="video/mp4">
+      Your browser can't play this video. <a href="demo.mp4">Download it (8 MB)</a>.
+    </video>
+  </div>
+  <p class="cap">90-second walkthrough: problem, method, results and the closed-loop simulation. Silent, with captions.</p>
+
+  <div class="glance">
+    <div><strong>8.5%</strong><span>mode-prediction error on people the model never saw (leave-one-subject-out)</span></div>
+    <div><strong>8.2%</strong><span>with IMU + goniometer only, so EMG was not needed</span></div>
+    <div><strong>3.3×</strong><span>lower knee-tracking error than a fixed exoskeleton controller</span></div>
+    <div><strong>22,411</strong><span>gait events from 10 people, 7 locomotion modes</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="label">The question</span>
+    <h2>An exoskeleton has to know what you are about to do</h2>
+    <div class="prose">
+      <p>A powered knee exoskeleton should help differently on level ground, on ramps and on stairs. Climbing stairs needs a strongly bent knee and a lot of support, and walking on the flat needs much less. The device cannot ask the user. It has to <b>infer the next activity from body-worn sensors, one step ahead</b>, and if it is wrong or late it pushes the knee the wrong way.</p>
+      <p>I asked three questions: <b>(1)</b> How well can wearable sensors predict the next locomotion mode for a person the system has never seen? <b>(2)</b> Which sensors are actually needed? <b>(3)</b> Does better intent recognition translate into better exoskeleton behaviour?</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Approach</span>
+    <h2>From raw signals to a closed loop</h2>
+    <div class="prose"><p>Data: <b>ENABL3S</b> (Hu, Rouse &amp; Hargrove, <i>Front. Robot. AI</i> 2018). 10 able-bodied people walked a circuit of level ground, ramps and stairs wearing IMUs, surface EMG and goniometers on both legs, recorded at 1 kHz.</p></div>
+    <div class="pipe">
+      <div><h4>Gait-event windows</h4><p>300 ms of all 52 channels, ending at each heel contact and toe-off; channels ordered by the leg that triggered the event</p></div>
+      <div><h4>Features</h4><p>284 per window: mean, SD, min, max, first and last for the mechanical channels; MAV, WL, ZC and SSC for EMG</p></div>
+      <div><h4>Classifiers</h4><p>LDA, SVM, random forest, and a 1D-CNN (~50k parameters) on the downsampled raw window</p></div>
+      <div><h4>Honest evaluation</h4><p>Leave-one-subject-out; error reported separately for steady walking and for transitions</p></div>
+      <div class="last"><h4>Knee exo in MuJoCo</h4><p>The predicted mode switches the reference and gains of an impedance controller with inverse-dynamics feedforward</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Result 1</span>
+    <h2>8.5% error on unseen people, but transitions are the hard part</h2>
+    <div class="two">
+      <div class="prose">
+        <p>My features with a random forest reached <b>8.5%</b> overall error, slightly better than the features supplied with the dataset (9.0%). In steady walking the error is only 3.8%, but at <b>transitions</b>, the moments that matter most for an exoskeleton, it rises to 24.7%.</p>
+        <p>The SVM (18.6%) and the 1D-CNN (21.4%) are better at transitions. The most common mistake is switching <b>one step late</b>: walking → ramp descent (65% error) and walking → standing (60%) are usually still predicted as walking.</p>
+      </div>
+      <div class="tbl"><table>
+        <tr><th>Model</th><th>Overall</th><th>Steady</th><th>Transition</th></tr>
+        <tr><td>LDA, own features</td><td>14.8</td><td>8.1</td><td>37.5</td></tr>
+        <tr><td>SVM, own features</td><td>11.7</td><td>9.6</td><td>18.6</td></tr>
+        <tr class="best"><td>RF, own features</td><td>8.5</td><td>3.8</td><td>24.7</td></tr>
+        <tr><td>RF, provided features</td><td>9.0</td><td>4.2</td><td>25.1</td></tr>
+        <tr><td>1D-CNN, raw windows</td><td>12.2</td><td>9.6</td><td>21.4</td></tr>
+      </table><p class="cap">Error in %, leave-one-subject-out over 10 subjects.</p></div>
+    </div>
+    <figure><img src="step4-comparison.png" alt="Bar chart of steady and transition error for each classifier" loading="lazy"></figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Result 2</span>
+    <h2>EMG was not needed</h2>
+    <div>
+      <div class="prose">
+        <p>I retrained the random forest on each sensor group. <b>IMU + goniometer alone gave 8.2%</b>, as good as all sensors together (8.5%). EMG alone gave 23.0%, and EMG features made up only 18% of the forest's feature importance.</p>
+        <p>For a wearable device this is good news: EMG electrodes are the hardest sensors to put on, keep in place and calibrate.</p>
+        <p>Waiting longer helps only a little: ending the window 120 ms after the gait event lowers transition error from 24.7% to 22.3%. Deciding at the gait event itself costs little.</p>
+      </div>
+    </div>
+    <figure><img src="step5-sensor-ablation.png" alt="Error by sensor set for LDA and random forest" loading="lazy"><figcaption>Error by sensor set (left: LDA, right: random forest).</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Result 3</span>
+    <h2>Closing the loop: 3.3× lower knee error</h2>
+    <div class="prose">
+      <p>A MuJoCo model of a leg on a test bench: the thigh is fixed and the shank and foot are moved only by the exoskeleton motor (limited to 60 Nm), as if the user's own muscles were weak. Each mode has a reference knee trajectory taken from the dataset, and the controller combines inverse-dynamics feedforward with per-mode impedance gains. At every heel contact the mode is chosen by one of three sources, and I ran every circuit of all 10 test subjects:</p>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Mode chosen by</th><th>Knee RMSE [°]</th><th>Max error [°]</th><th>Mean torque [Nm]</th></tr>
+      <tr><td>Oracle (true mode)</td><td>0.54</td><td>4.1</td><td>8.2</td></tr>
+      <tr class="best"><td>My classifier (RF, leave-one-subject-out)</td><td>4.13</td><td>24.3</td><td>8.2</td></tr>
+      <tr><td>Fixed level-walking controller</td><td>13.49</td><td>55.4</td><td>7.7</td></tr>
+    </table></div>
+    <div class="player" style="margin-top:22px">
+      <video controls preload="none" playsinline poster="sim-poster.jpg"><source src="sim.mp4" type="video/mp4"></video>
+    </div>
+    <p class="cap">A real recorded walk of test subject AB156, never used in training. Brown leg = the simulated leg moved by the exo; transparent green = the knee angle the person needed. Grey bands in the bottom plot mark strides where the classifier chose the wrong mode.</p>
+    <div class="two" style="margin-top:8px">
+      <figure><img src="step6-rmse-per-subject.png" alt="Knee tracking RMSE per test subject for the three controllers" loading="lazy"><figcaption>Knee-tracking error for each test subject.</figcaption></figure>
+      <div class="prose" style="margin-top:18px">
+        <p>Most of the remaining error comes from a few strides. The most harmful mistake is a wrong <b>"standing"</b> guess during walking: the controller then holds the knee almost straight while the person needs it to bend. In a real device that is a safety issue, and it suggests a rule such as "never switch to standing in the middle of a stride".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Limits</span>
+    <h2>What this does not show</h2>
+    <div class="note"><ul>
+      <li>The exoskeleton is simulated: a leg on a bench with a passive user, not a person walking with a real device.</li>
+      <li>All 10 subjects are able-bodied. People who need an exoskeleton move differently, so the error would likely be higher.</li>
+      <li>The classifier decides once per stride, at heel contact. A real controller would also need confidence thresholds and safe fallback modes.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="next">
+      <span class="label">Next</span>
+      <h2>From the dataset to my own sensors</h2>
+      <p>I am now building a low-cost wearable sleeve (ESP32 with IMU and EMG sensors) to run the same idea on live data: measure the joint angle on my own body and drive the MuJoCo model in real time, then recognise activities from my own recordings.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Built with</span>
+    <div class="tools"><span>Python</span><span>NumPy · pandas</span><span>scikit-learn</span><span>PyTorch</span><span>MuJoCo 3</span><span>Jupyter</span><span>Matplotlib</span></div>
+    <p class="prose" style="margin-top:16px">All code (data parsing, features, models, controller, simulation and videos) was written for this project. It is available on request: <a href="mailto:tasfiaa.chowdhury@gmail.com">tasfiaa.chowdhury@gmail.com</a>.</p>
+    <p class="prose" style="margin-top:8px;font-size:.9rem">Data: B. Hu, E. Rouse and L. Hargrove, "Benchmark datasets for bilateral lower-limb neuromechanical signals from wearable sensors during unassisted locomotion in able-bodied individuals," <i>Frontiers in Robotics and AI</i> 5:14, 2018. <a href="https://doi.org/10.3389/frobt.2018.00014" target="_blank" rel="noopener">doi:10.3389/frobt.2018.00014</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> Tasfia Noor Chowdhury</span><a href="/">← Back to noortasfia.github.io</a></div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>

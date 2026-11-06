@@ -157,7 +157,7 @@
     <h2>An exoskeleton has to know what you are about to do</h2>
     <div class="prose">
       <p>A powered knee exoskeleton should help differently on level ground, on ramps and on stairs. Climbing stairs needs a strongly bent knee and a lot of support, and walking on the flat needs much less. The device cannot ask the user. It has to <b>infer the next activity from body-worn sensors, one step ahead</b>, and if it is wrong or late it pushes the knee the wrong way.</p>
-      <p>I asked three questions: <b>(1)</b> How well can wearable sensors predict the next locomotion mode for a person the system has never seen? <b>(2)</b> Which sensors are actually needed? <b>(3)</b> Does better intent recognition translate into better exoskeleton behaviour?</p>
+      <p>I asked three questions: <b>(1)</b> How well can wearable sensors predict the next locomotion mode for a person the system has never seen? <b>(2)</b> Which sensors are actually needed? <b>(3)</b> Does better intent recognition translate into better exoskeleton behaviour? <b>(4)</b> Can a short calibration walk adapt the model to a new user?</p>
     </div>
   </div>
 </section>
@@ -237,6 +237,29 @@
         <p>Most of the remaining error comes from a few strides. The most harmful mistake is a wrong <b>"standing"</b> guess during walking: the controller then holds the knee almost straight while the person needs it to bend. In a real device that is a safety issue, and it suggests a rule such as "never switch to standing in the middle of a stride".</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">Result 4</span>
+    <h2>A 3-minute calibration walk cuts the error by a quarter</h2>
+    <div class="two">
+      <div class="prose">
+        <p>The error varied a lot between people (5.6% to 14.6%). Following two recent papers, Hur et al. 2025 (<i>Sci. Rep.</i>, user-adaptive training) and Ding et al. 2024 (<i>Sensors</i>, active learning), I let each test subject walk their first 6 circuits (about 3 minutes) as a calibration walk. I tested on the remaining circuits.</p>
+        <p>Adding just <b>50 labelled gait events</b> from the new user, the ones the model was least sure about, lowered the error from <b>8.3% to 6.3%</b>. All 10 people improved (Wilcoxon p = 0.002), and the worst one went from 12.9% to 6.3%. Choosing uncertain events beat random choice and was as good as labelling the whole walk (about 290 events). A model trained only on the new user's data was worse than no calibration, so the other people's data are still essential.</p>
+        <p>The honest catch: <b>transition error barely moved</b> (24.6% → 22.6%). Calibration fixes <i>who</i> the person is, not <i>when</i> a mode change shows up in the signals. That is my next question.</p>
+      </div>
+      <div class="tbl"><table>
+        <tr><th>Calibration</th><th>Labels</th><th>Overall</th><th>Transition</th></tr>
+        <tr><td>None (other people only)</td><td>0</td><td>8.3</td><td>24.6</td></tr>
+        <tr><td>+ 50 random events</td><td>50</td><td>7.2</td><td>23.8</td></tr>
+        <tr class="best"><td>+ 50 least-sure events</td><td>50</td><td>6.3</td><td>22.6</td></tr>
+        <tr><td>+ whole calibration walk</td><td>≈ 290</td><td>6.3</td><td>23.2</td></tr>
+        <tr><td>New user's data only</td><td>≈ 290</td><td>9.1</td><td>31.8</td></tr>
+      </table><p class="cap">Error in % on the circuits after the calibration walk; 10 subjects × 3 seeds.</p></div>
+    </div>
+    <figure><img src="step7-personalisation.png" alt="Error versus number of labelled calibration events, and per-subject error before and after calibration" loading="lazy"><figcaption>Left, middle: error vs number of labelled calibration events. Right: each test subject before (black) and after (red) 50 least-sure events.</figcaption></figure>
   </div>
 </section>
 
